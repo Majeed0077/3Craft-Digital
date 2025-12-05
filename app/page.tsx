@@ -56,10 +56,9 @@ export default function HomePage() {
             <div className="hero-kicker">Performance-Driven Creative Studio</div>
             <h1>Design that demands attention and drives action.</h1>
             <p className="hero-subtext">
-              3Craft Digital is a 3-expert studio – two designers and one technical
-              lead – crafting bold branding, high-CTR thumbnails, and clean,
-              conversion-focused websites for brands and creators who refuse to
-              blend in.
+              3Craft Digital builds modern brand identities and clean, conversion-focused CMS
+              websites. A compact 3-specialist studio combining brand design, visual systems,
+              and technical development into one sharp digital experience.
             </p>
             <div className="hero-buttons">
               <a href="#contact" className="btn btn-primary">
@@ -80,16 +79,16 @@ export default function HomePage() {
 
             <div className="hero-orbit-card hero-orbit-card-left">
               <div className="hero-orbit-pill">CMS Development</div>
-              <h4>WordPress</h4>
-              <p>Designed to boost your presence.</p>
+              <h4>WordPress, Wix, Shopify</h4>
+              <p>Clean, modern and fully responsive.</p>
             </div>
 
             <div className="hero-orbit-card hero-orbit-card-right">
               <div className="hero-orbit-pill hero-orbit-pill-blue">
-                Logo &amp; Branding
+                Brand Identity
               </div>
-              <h4>Clean, modern &amp; professional</h4>
-              <p>Perfect for startups &amp; businesses.</p>
+              <h4>Modern, sharp & professional</h4>
+              <p>Built to make your business stand out.</p>
             </div>
           </div>
         </div>
@@ -107,25 +106,27 @@ export default function HomePage() {
             <div className="team-card">
               <h3>Brand Designer</h3>
               <p>
-                Leads logo systems, typography, and overall visual identity so your
-                brand looks sharp and consistent across every touchpoint.
+                Crafts the core brand identity — logo system, typography, colors, and
+                visual direction for a sharp, modern brand presence.
               </p>
             </div>
+
             <div className="team-card">
-              <h3>Content Designer</h3>
+              <h3>Creative Designer</h3>
               <p>
-                Focused on scroll-stopping thumbnails, social posts, ads, and
-                packaging — the visuals your audience actually sees every day.
+                Builds the extended visual system including social assets, packaging,
+                stationery, layouts, and brand collateral for consistent real-world use.
               </p>
             </div>
+
             <div className="team-card">
-              <h3>Technical &amp; Business Lead (You)</h3>
+              <h3>Technical & Business Lead</h3>
               <p>
-                Web developer, seller, and Upwork bidder handling websites,
-                strategy, communication, and project flow so everything ships on
-                time and clean.
+                Handles CMS website development, UX layouts, hosting setup, and technical
+                execution. Manages client communication, proposals, and project delivery.
               </p>
             </div>
+
           </div>
         </div>
       </section>
