@@ -1,5 +1,12 @@
-// app/page.tsx
+"use client";
+import React from "react";
+
 export default function HomePage() {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("Form submitted");
+  };
+
   return (
     <>
       {/* HEADER */}
@@ -388,13 +395,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <form
-            className="contact-form"
-            onSubmit={(e) => {
-              e.preventDefault();
-              // hook this up to an API / email service later
-            }}
-          >
+          <form className="contact-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Name</label>
               <input
@@ -435,7 +436,11 @@ export default function HomePage() {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary" style={{ width: "100%" }}>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              style={{ width: "100%" }}
+            >
               Send message
             </button>
           </form>

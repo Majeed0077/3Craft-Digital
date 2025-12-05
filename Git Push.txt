@@ -1,0 +1,14 @@
+git init
+git add .
+git commit -m "Initial Next.js website for 3Craft Digital"
+
+If new ...................................
+git remote add origin https://github.com/Majeed0077/3Craft-Digital.git
+git branch -M main
+git push -u origin main
+
+
+
+git add .gitignore
+git commit -m "Add Next.js .gitignore"
+git push
