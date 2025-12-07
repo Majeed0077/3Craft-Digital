@@ -12,3 +12,10 @@ git push -u origin main
 git add .gitignore
 git commit -m "Add Next.js .gitignore"
 git push
+
+
+
+New Update/////
+git add .
+git commit -m "update"
+git push
