@@ -66,6 +66,7 @@ export default function ContactSection() {
 }
 
   };
+
   return (
     <section id="contact">
       <div className="container contact-inner">
