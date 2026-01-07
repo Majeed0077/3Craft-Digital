@@ -29,7 +29,6 @@ export default function Hero() {
             combining brand design, visual systems, and technical development
             into one sharp digital experience.
           </p>
-
           <div className="hero-buttons">
             <a href="#contact" className="btn btn-primary">
               Get a custom quote
@@ -41,7 +40,7 @@ export default function Hero() {
 
           <div className="hero-meta">
             <span className="dot" />
-            <span>Average response time: under 1 hour</span>
+            <span>Average response time: under 15 minutes</span>
           </div>
         </div>
 
