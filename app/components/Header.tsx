@@ -46,7 +46,6 @@ export default function Header() {
             <div className="logo-text-sub">Design that demands attention</div>
           </div>
         </a>
-
         {/* Desktop nav */}
         <nav className="desktop-nav">
           <a href="#services">Services</a>
