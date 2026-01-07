@@ -129,7 +129,7 @@ export default function Header() {
         <a href="#hero" className="logo-wrap" onClick={closeMenu}>
           <div className="logo-mark">
             <Image
-              src="/Image/3-mark.png"
+              src="/Image/3-mark logo.png"
               alt="3Craft Digital logo"
               width={39}
               height={39}
