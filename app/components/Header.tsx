@@ -131,8 +131,8 @@ export default function Header() {
             <Image
               src="/Image/3-mark-logo-design.png"
               alt="3Craft Digital logo"
-              width={72}
-              height={72}
+              width={60}
+              height={60}
               priority
             />
           </div>
