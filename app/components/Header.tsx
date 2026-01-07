@@ -1,32 +1,127 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useId, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
+
+const NAV_ITEMS = [
+  { href: "#services", label: "Services" },
+  { href: "#portfolio", label: "Work" },
+  { href: "#team", label: "Team" },
+  { href: "#process", label: "Process" },
+  { href: "#testimonials", label: "Clients" },
+  { href: "#contact", label: "Contact" },
+];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const panelId = useId();
+  const panelTitleId = useId();
+  const toggleRef = useRef<HTMLButtonElement | null>(null);
+  const panelRef = useRef<HTMLDivElement | null>(null);
+  const lastActiveRef = useRef<HTMLElement | null>(null);
 
-  // Close on ESC
-  useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+  const closeMenu = useCallback(() => setOpen(false), []);
+
+  const toggleMenu = useCallback(() => {
+    setOpen((value) => !value);
   }, []);
+
+  const getFocusable = useCallback(() => {
+    if (!panelRef.current) return [];
+    const nodes = panelRef.current.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+    );
+    return Array.from(nodes);
+  }, []);
+
+  // Close on ESC + focus trap
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeMenu();
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      const focusable = getFocusable();
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+
+      if (event.shiftKey && active === first) {
+        event.preventDefault();
+        last.focus();
+        return;
+      }
+
+      if (!event.shiftKey && active === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [closeMenu, getFocusable, open]);
 
   // Lock body scroll when menu open
   useEffect(() => {
     if (!open) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const { body, documentElement } = document;
+    const prevOverflow = body.style.overflow;
+    const prevPadding = body.style.paddingRight;
+    const scrollbarWidth = window.innerWidth - documentElement.clientWidth;
+
+    body.style.overflow = "hidden";
+    if (scrollbarWidth > 0) {
+      body.style.paddingRight = `${scrollbarWidth}px`;
+    }
     return () => {
-      document.body.style.overflow = prev;
+      body.style.overflow = prevOverflow;
+      body.style.paddingRight = prevPadding;
     };
   }, [open]);
 
-  const closeMenu = () => setOpen(false);
+  // Focus management when menu opens/closes
+  useEffect(() => {
+    if (open) {
+      lastActiveRef.current = document.activeElement as HTMLElement | null;
+      const focusable = getFocusable();
+      if (focusable.length > 0) {
+        focusable[0].focus();
+      } else {
+        panelRef.current?.focus();
+      }
+      return;
+    }
+
+    const fallback = toggleRef.current;
+    (lastActiveRef.current || fallback)?.focus();
+  }, [getFocusable, open]);
+
+  // Close on hash change
+  useEffect(() => {
+    if (!open) return;
+    const onHashChange = () => closeMenu();
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, [closeMenu, open]);
+
+  // Close when switching to desktop layout
+  useEffect(() => {
+    if (!open) return;
+    const onResize = () => {
+      if (window.innerWidth > 1024) closeMenu();
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [closeMenu, open]);
 
   return (
     <header>
@@ -48,12 +143,13 @@ export default function Header() {
         </a>
         {/* Desktop nav */}
         <nav className="desktop-nav">
-          <a href="#services">Services</a>
-          <a href="#portfolio">Work</a>
-          <a href="#team">Team</a>
-          <a href="#process">Process</a>
-          <a href="#testimonials">Clients</a>
-          <a href="#contact">Contact</a>
+          <ul className="nav-list">
+            {NAV_ITEMS.map((item) => (
+              <li key={item.href}>
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))}
+          </ul>
         </nav>
 
         <div className="header-actions">
@@ -68,7 +164,8 @@ export default function Header() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls={panelId}
-            onClick={() => setOpen((v) => !v)}
+            onClick={toggleMenu}
+            ref={toggleRef}
           >
             <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
             <span className={`burger ${open ? "open" : ""}`} />
@@ -88,29 +185,29 @@ export default function Header() {
         className={`mobile-nav ${open ? "open" : ""}`}
         role="dialog"
         aria-modal="true"
-        aria-label="Mobile navigation"
+        aria-labelledby={panelTitleId}
+        ref={panelRef}
+        tabIndex={-1}
       >
+        <div id={panelTitleId} className="sr-only">
+          Mobile navigation
+        </div>
         <div className="mobile-nav-inner">
-          <a href="#services" onClick={closeMenu}>
-            Services
-          </a>
-          <a href="#portfolio" onClick={closeMenu}>
-            Work
-          </a>
-          <a href="#team" onClick={closeMenu}>
-            Team
-          </a>
-          <a href="#process" onClick={closeMenu}>
-            Process
-          </a>
-          <a href="#testimonials" onClick={closeMenu}>
-            Clients
-          </a>
-          <a href="#contact" onClick={closeMenu}>
-            Contact
-          </a>
+          <ul className="nav-list mobile-nav-list">
+            {NAV_ITEMS.map((item) => (
+              <li key={item.href}>
+                <a href={item.href} onClick={closeMenu}>
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-          <a href="#contact" className="btn btn-primary mobile-cta" onClick={closeMenu}>
+          <a
+            href="#contact"
+            className="btn btn-primary mobile-cta"
+            onClick={closeMenu}
+          >
             Start a Project
           </a>
         </div>

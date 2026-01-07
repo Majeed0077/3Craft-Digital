@@ -1,19 +1,74 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export default function Hero() {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const rafRef = useRef<number | null>(null);
+  const lastRef = useRef({ x: 0, y: 0 });
+  const reduceMotionRef = useRef(false);
+  const pointerFineRef = useRef(true);
+
+  useEffect(() => {
+    const reduceQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const pointerQuery = window.matchMedia("(pointer: fine)");
+
+    const updateSettings = () => {
+      reduceMotionRef.current = reduceQuery.matches;
+      pointerFineRef.current = pointerQuery.matches;
+
+      if (reduceMotionRef.current || !pointerFineRef.current) {
+        setOffset({ x: 0, y: 0 });
+      }
+    };
+
+    updateSettings();
+
+    if (reduceQuery.addEventListener) {
+      reduceQuery.addEventListener("change", updateSettings);
+      pointerQuery.addEventListener("change", updateSettings);
+    } else {
+      reduceQuery.addListener(updateSettings);
+      pointerQuery.addListener(updateSettings);
+    }
+
+    return () => {
+    const legacy = reduceQuery as MediaQueryList & {
+  addListener?: (cb: () => void) => void;
+  removeListener?: (cb: () => void) => void;
+};
+
+if (legacy.addListener) {
+  legacy.addListener(updateSettings);
+} else {
+  reduceQuery.addEventListener("change", updateSettings);
+}
+
+    };
+  }, []);
 
   useEffect(() => {
     const handleMove = (e: MouseEvent) => {
+      if (reduceMotionRef.current || !pointerFineRef.current) return;
       const x = (e.clientX - window.innerWidth / 2) * 0.025; // was 0.01
       const y = (e.clientY - window.innerHeight / 2) * 0.025; // was 0.01
-      setOffset({ x, y });
+      lastRef.current = { x, y };
+
+      if (rafRef.current !== null) return;
+      rafRef.current = window.requestAnimationFrame(() => {
+        rafRef.current = null;
+        setOffset(lastRef.current);
+      });
     };
 
-    window.addEventListener("mousemove", handleMove);
-    return () => window.removeEventListener("mousemove", handleMove);
+    window.addEventListener("mousemove", handleMove, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", handleMove);
+      if (rafRef.current !== null) {
+        window.cancelAnimationFrame(rafRef.current);
+        rafRef.current = null;
+      }
+    };
   }, []);
 
   return (
