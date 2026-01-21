@@ -1,12 +1,24 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { useState } from "react";
+import {
+  Box,
+  Button,
+  Container,
+  Drawer,
+  IconButton,
+  Link,
+  List,
+  ListItemButton,
+  ListItemText,
+  Stack,
+  Typography,
+} from "@mui/material";
 
 const NAV_ITEMS = [
   { href: "#services", label: "Services" },
   { href: "#portfolio", label: "Work" },
-  // { href: "#team", label: "Team" },
   { href: "#process", label: "Process" },
   { href: "#testimonials", label: "Clients" },
   { href: "#contact", label: "Contact" },
@@ -14,204 +26,198 @@ const NAV_ITEMS = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const panelId = useId();
-  const panelTitleId = useId();
-  const toggleRef = useRef<HTMLButtonElement | null>(null);
-  const panelRef = useRef<HTMLDivElement | null>(null);
-  const lastActiveRef = useRef<HTMLElement | null>(null);
-
-  const closeMenu = useCallback(() => setOpen(false), []);
-
-  const toggleMenu = useCallback(() => {
-    setOpen((value) => !value);
-  }, []);
-
-  const getFocusable = useCallback(() => {
-    if (!panelRef.current) return [];
-    const nodes = panelRef.current.querySelectorAll<HTMLElement>(
-      'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
-    );
-    return Array.from(nodes);
-  }, []);
-
-  // Close on ESC + focus trap
-  useEffect(() => {
-    if (!open) return;
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        closeMenu();
-        return;
-      }
-
-      if (event.key !== "Tab") return;
-
-      const focusable = getFocusable();
-      if (focusable.length === 0) return;
-
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      const active = document.activeElement as HTMLElement | null;
-
-      if (event.shiftKey && active === first) {
-        event.preventDefault();
-        last.focus();
-        return;
-      }
-
-      if (!event.shiftKey && active === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    };
-
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
-  }, [closeMenu, getFocusable, open]);
-
-  // Lock body scroll when menu open
-  useEffect(() => {
-    if (!open) return;
-    const { body, documentElement } = document;
-    const prevOverflow = body.style.overflow;
-    const prevPadding = body.style.paddingRight;
-    const scrollbarWidth = window.innerWidth - documentElement.clientWidth;
-
-    body.style.overflow = "hidden";
-    if (scrollbarWidth > 0) {
-      body.style.paddingRight = `${scrollbarWidth}px`;
-    }
-    return () => {
-      body.style.overflow = prevOverflow;
-      body.style.paddingRight = prevPadding;
-    };
-  }, [open]);
-
-  // Focus management when menu opens/closes
-  useEffect(() => {
-    if (open) {
-      lastActiveRef.current = document.activeElement as HTMLElement | null;
-      const focusable = getFocusable();
-      if (focusable.length > 0) {
-        focusable[0].focus();
-      } else {
-        panelRef.current?.focus();
-      }
-      return;
-    }
-
-    const fallback = toggleRef.current;
-    (lastActiveRef.current || fallback)?.focus();
-  }, [getFocusable, open]);
-
-  // Close on hash change
-  useEffect(() => {
-    if (!open) return;
-    const onHashChange = () => closeMenu();
-    window.addEventListener("hashchange", onHashChange);
-    return () => window.removeEventListener("hashchange", onHashChange);
-  }, [closeMenu, open]);
-
-  // Close when switching to desktop layout
-  useEffect(() => {
-    if (!open) return;
-    const onResize = () => {
-      if (window.innerWidth > 1024) closeMenu();
-    };
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, [closeMenu, open]);
 
   return (
-    <header>
-      <div className="container header-inner">
-        <a href="#hero" className="logo-wrap" onClick={closeMenu}>
-          <div className="logo-mark">
-            <Image
-              src="/Image/3-mark-logo-design.png"
-              alt="3Craft Digital logo"
-              width={60}
-              height={60}
-              priority
-            />
-          </div>
-          <div className="logo-text-group">
-            <div className="logo-text-main">3Craft Digital</div>
-            <div className="logo-text-sub">Design that demands attention</div>
-          </div>
-        </a>
-        {/* Desktop nav */}
-        <nav className="desktop-nav">
-          <ul className="nav-list">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.href}>
-                <a href={item.href}>{item.label}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="header-actions">
-          <a href="#contact" className="btn btn-primary desktop-cta">
-            Start a Project
-          </a>
-
-          {/* Mobile Hamburger */}
-          <button
-            type="button"
-            className="mobile-nav-toggle"
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-            aria-controls={panelId}
-            onClick={toggleMenu}
-            ref={toggleRef}
+    <Box
+      component="header"
+      sx={{
+        position: "sticky",
+        top: 0,
+        zIndex: 50,
+        background: "rgba(2, 6, 23, 0.55)",
+        backdropFilter: "blur(18px) saturate(1.15)",
+        borderBottom: "1px solid rgba(148, 163, 184, 0.2)",
+      }}
+    >
+      <Container maxWidth="lg">
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+          sx={{ minHeight: 88 }}
+        >
+          <Link
+            href="#hero"
+            underline="none"
+            color="inherit"
+            sx={{ display: "flex", alignItems: "center", gap: 1.25 }}
           >
-            <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
-            <span className={`burger ${open ? "open" : ""}`} />
-          </button>
-        </div>
-      </div>
+            <Box
+              sx={{
+                width: 64,
+                height: 64,
+                borderRadius: "999px",
+                overflow: "hidden",
+                display: "grid",
+                placeItems: "center",
+              }}
+            >
+              <Image
+                src="/Image/3-mark-logo-design.png"
+                alt="3Craft Digital logo"
+                width={60}
+                height={60}
+                priority
+              />
+            </Box>
+            <Box>
+              <Typography
+                variant="subtitle1"
+                sx={{ fontWeight: 700, color: "#f9fafb" }}
+              >
+                3Craft Digital
+              </Typography>
+              <Typography
+                variant="caption"
+                sx={{
+                  textTransform: "uppercase",
+                  letterSpacing: "0.16em",
+                  color: "#6b7280",
+                }}
+              >
+                Design that demands attention
+              </Typography>
+            </Box>
+          </Link>
 
-      {/* Overlay */}
-      <div
-        className={`mobile-nav-overlay ${open ? "open" : ""}`}
-        onClick={closeMenu}
-      />
+          <Stack
+            direction="row"
+            spacing={2.5}
+            alignItems="center"
+            sx={{ display: { xs: "none", md: "flex" } }}
+          >
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                underline="none"
+                sx={{
+                  color: "rgba(255,255,255,0.82)",
+                  fontWeight: 600,
+                  position: "relative",
+                  "&:hover": { color: "#fff" },
+                }}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </Stack>
 
-      {/* Menu Panel */}
-      <div
-        id={panelId}
-        className={`mobile-nav ${open ? "open" : ""}`}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby={panelTitleId}
-        ref={panelRef}
-        tabIndex={-1}
+          <Stack direction="row" spacing={1} alignItems="center">
+            <Button
+              href="#contact"
+              variant="contained"
+              sx={{
+                display: { xs: "none", md: "inline-flex" },
+                textTransform: "none",
+                fontWeight: 600,
+                borderRadius: "10px",
+                background:
+                  "linear-gradient(135deg, rgba(59,130,246,0.92), rgba(29,78,216,0.92))",
+                boxShadow: "0 14px 34px rgba(15, 23, 42, 0.45)",
+                "&:hover": {
+                  background: "rgba(29, 78, 216, 0.95)",
+                },
+              }}
+            >
+              Start a Project
+            </Button>
+
+            <IconButton
+              onClick={() => setOpen(true)}
+              sx={{
+                display: { xs: "inline-flex", md: "none" },
+                width: 44,
+                height: 44,
+                borderRadius: "12px",
+                border: "1px solid #1f2937",
+                background: "rgba(2, 6, 23, 0.6)",
+              }}
+              aria-label="Open menu"
+            >
+              <Box
+                sx={{
+                  width: 18,
+                  height: 2,
+                  borderRadius: "999px",
+                  background: "#e5e7eb",
+                  position: "relative",
+                  "&::before, &::after": {
+                    content: '""',
+                    position: "absolute",
+                    left: 0,
+                    width: 18,
+                    height: 2,
+                    borderRadius: "999px",
+                    background: "#e5e7eb",
+                  },
+                  "&::before": { top: -6 },
+                  "&::after": { top: 6 },
+                }}
+              />
+            </IconButton>
+          </Stack>
+        </Stack>
+      </Container>
+
+      <Drawer
+        anchor="top"
+        open={open}
+        onClose={() => setOpen(false)}
+        PaperProps={{
+          sx: {
+            background: "rgba(2, 6, 23, 0.9)",
+            backdropFilter: "blur(16px)",
+            borderBottom: "1px solid rgba(148, 163, 184, 0.2)",
+          },
+        }}
       >
-        <div id={panelTitleId} className="sr-only">
-          Mobile navigation
-        </div>
-        <div className="mobile-nav-inner">
-          <ul className="nav-list mobile-nav-list">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.href}>
-                <a href={item.href} onClick={closeMenu}>
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          <a
-            href="#contact"
-            className="btn btn-primary mobile-cta"
-            onClick={closeMenu}
-          >
-            Start a Project
-          </a>
-        </div>
-      </div>
-    </header>
+        <Container maxWidth="lg" sx={{ py: 3 }}>
+          <Stack spacing={2}>
+            <List sx={{ p: 0 }}>
+              {NAV_ITEMS.map((item) => (
+                <ListItemButton
+                  key={item.href}
+                  component="a"
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  sx={{
+                    borderRadius: "12px",
+                    color: "rgba(255,255,255,0.85)",
+                    "&:hover": { background: "rgba(59, 130, 246, 0.12)" },
+                  }}
+                >
+                  <ListItemText primary={item.label} />
+                </ListItemButton>
+              ))}
+            </List>
+            <Button
+              href="#contact"
+              variant="contained"
+              onClick={() => setOpen(false)}
+              sx={{
+                textTransform: "none",
+                fontWeight: 600,
+                borderRadius: "12px",
+                background:
+                  "linear-gradient(135deg, rgba(59,130,246,0.92), rgba(29,78,216,0.92))",
+              }}
+            >
+              Start a Project
+            </Button>
+          </Stack>
+        </Container>
+      </Drawer>
+    </Box>
   );
 }
