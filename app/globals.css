@@ -32,7 +32,12 @@ html {
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Inter",
+    sans-serif;
   color: var(--text-muted);
   background: radial-gradient(circle at top, #020a1f 0, #020617 48%, #000 100%);
   line-height: 1.6;
@@ -88,7 +93,12 @@ section {
 h1,
 h2,
 h3 {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Poppins", sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Poppins",
+    sans-serif;
   color: var(--text-dark);
 }
 
@@ -151,8 +161,6 @@ header {
   height: 100%;
   object-fit: contain;
 }
-
-
 
 .logo-icon-svg svg {
   width: 26px;
@@ -701,7 +709,7 @@ nav a:hover::after {
   padding: 18px 18px;
   background: #020617;
 }
-.why-card:hover{
+.why-card:hover {
   border-color: var(--blue);
   transform: translateY(-3px);
   box-shadow: var(--shadow-soft);
@@ -730,7 +738,11 @@ nav a:hover::after {
   margin: 0 auto 10px;
   font-weight: 700;
 }
-
+.process-step:hover {
+  border-color: var(--blue);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+}
 /* Testimonials */
 .testimonials {
   background: #020817;
@@ -758,7 +770,7 @@ nav a:hover::after {
   color: #6b7280;
 }
 .testimonial-card:hover {
-   border-color: var(--blue);
+  border-color: var(--blue);
   transform: translateY(-3px);
   box-shadow: var(--shadow-soft);
 }
@@ -794,7 +806,11 @@ nav a:hover::after {
 }
 
 .contact-form {
-  background: linear-gradient(160deg, rgba(15, 23, 42, 0.85), rgba(2, 6, 23, 0.95));
+  background: linear-gradient(
+    160deg,
+    rgba(15, 23, 42, 0.85),
+    rgba(2, 6, 23, 0.95)
+  );
   border-radius: var(--radius-lg);
   padding: 26px 24px;
   box-shadow:
@@ -840,7 +856,10 @@ nav a:hover::after {
   border: 1px solid rgba(51, 65, 85, 0.9);
   font-size: 0.95rem;
   outline: none;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
   resize: vertical;
   min-height: 44px;
   background: rgba(2, 6, 23, 0.8);
@@ -938,7 +957,6 @@ footer {
   }
 }
 
-
 @media (max-width: 720px) {
   section {
     padding: 72px 0;
@@ -978,7 +996,9 @@ footer {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: border-color 0.18s ease, transform 0.18s ease;
+  transition:
+    border-color 0.18s ease,
+    transform 0.18s ease;
 }
 
 .mobile-nav-toggle:hover {
@@ -1011,7 +1031,10 @@ footer {
   height: 2px;
   background: #e5e7eb;
   border-radius: 999px;
-  transition: transform 0.18s ease, top 0.18s ease, opacity 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    top 0.18s ease,
+    opacity 0.18s ease;
 }
 
 .burger::before {
@@ -1078,7 +1101,9 @@ footer {
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
   z-index: 70;
 }
 
@@ -1107,7 +1132,10 @@ footer {
   border-radius: 12px;
   border: 1px solid transparent;
   color: #d1d5db;
-  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
 }
 
 .mobile-nav-inner a:hover {
@@ -1159,9 +1187,9 @@ footer {
   .contact-inner {
     grid-template-columns: minmax(0, 1fr);
   }
-} 
+}
 
-  /* ===== Responsive Layout ===== */
+/* ===== Responsive Layout ===== */
 
 /* Tablet */
 @media (max-width: 1024px) {

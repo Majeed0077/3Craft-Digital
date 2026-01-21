@@ -6,7 +6,7 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 const NAV_ITEMS = [
   { href: "#services", label: "Services" },
   { href: "#portfolio", label: "Work" },
-  { href: "#team", label: "Team" },
+  // { href: "#team", label: "Team" },
   { href: "#process", label: "Process" },
   { href: "#testimonials", label: "Clients" },
   { href: "#contact", label: "Contact" },
