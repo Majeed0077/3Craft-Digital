@@ -7,8 +7,8 @@ export default function Footer() {
         <div className="footer-brand">
           <div className="footer-mark">3Craft Digital</div>
           <p className="footer-tagline">
-            Design + development studio crafting brand systems and digital
-            experiences.
+            Design + Development Studio Crafting Brand Systems and Digital
+            Experiences.
           </p>
           <div className="footer-meta">Location: NASTP Karachi</div>
         </div>
