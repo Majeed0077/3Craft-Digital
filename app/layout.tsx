@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import BackgroundMotion from "./components/BackgroundMotion";
 
 export const metadata: Metadata = {
   title: "3Craft Digital – Design That Demands Attention",
@@ -14,7 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <BackgroundMotion />
+        <div className="page-shell">{children}</div>
+      </body>
     </html>
   );
 }
