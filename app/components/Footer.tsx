@@ -4,7 +4,9 @@ export default function Footer() {
   return (
     <footer>
       <div className="container footer-inner">
-        <div>© 2025 3Craft Digital. All rights reserved.</div>
+        <div>
+          © 2025 3Craft Digital. All rights reserved.
+        </div>
         <div className="footer-links">
           <a href="#hero">Home</a>
           <a href="#services">Services</a>
@@ -15,3 +17,4 @@ export default function Footer() {
     </footer>
   );
 }
+
