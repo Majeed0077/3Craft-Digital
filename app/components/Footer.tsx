@@ -22,6 +22,23 @@ export default function Footer() {
         </div>
 
         <div className="footer-block">
+          <h4>Connect</h4>
+          <a href="https://www.facebook.com/profile.php?id=61576706516191&sk=about_places" target="_blank" rel="noreferrer">
+            Facebook
+          </a>
+          <a href="https://www.instagram.com/3craftdigital/" target="_blank" rel="noreferrer">
+            Instagram
+          </a>
+          <a href="https://linkedin.com/" target="_blank" rel="noreferrer">
+            LinkedIn
+          </a>
+          <a href="https://behance.net/" target="_blank" rel="noreferrer">
+            Behance
+          </a>
+          
+        </div>
+
+        <div className="footer-block">
           <h4>Start a project</h4>
           <p>Tell us your goal and timeline. We reply with a clear plan.</p>
           <a className="btn btn-outline footer-cta" href="#contact">
@@ -37,4 +54,3 @@ export default function Footer() {
     </footer>
   );
 }
-
