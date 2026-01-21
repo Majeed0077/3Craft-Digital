@@ -677,6 +677,11 @@ nav a:hover::after {
   border-radius: 999px;
   background: rgba(15, 23, 42, 0.7);
 }
+.portfolio-item:hover {
+  border-color: var(--blue);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+}
 
 /* Why */
 .why {
@@ -696,7 +701,11 @@ nav a:hover::after {
   padding: 18px 18px;
   background: #020617;
 }
-
+.why-card:hover{
+  border-color: var(--blue);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+}
 /* Process */
 .process-steps {
   display: grid;
@@ -748,7 +757,11 @@ nav a:hover::after {
   font-size: 0.85rem;
   color: #6b7280;
 }
-
+.testimonial-card:hover {
+   border-color: var(--blue);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+}
 .stars {
   color: #facc15;
   margin-bottom: 8px;

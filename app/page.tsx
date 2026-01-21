@@ -2,7 +2,7 @@
 
 import Header from "./components/Header"
 import Hero from "./components/Hero";
-import TeamSection from "./components/TeamSection";
+// import TeamSection from "./components/TeamSection";
 import ServicesSection from "./components/ServicesSection";
 import PortfolioSection from "./components/PortfolioSection";
 import WhySection from "./components/WhySection";
@@ -16,7 +16,7 @@ export default function HomePage() {
     <>
       <Header />
       <Hero />
-      <TeamSection />
+      {/* <TeamSection /> */}
       <ServicesSection />
       <PortfolioSection />
       <WhySection />
