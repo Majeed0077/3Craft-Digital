@@ -26,7 +26,7 @@ const NAV_ITEMS = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [activeHref, setActiveHref] = useState<string>("#services");
+  const [activeHref, setActiveHref] = useState<string>(NAV_ITEMS[0].href);
 
   useEffect(() => {
     const setFromHash = () => {
@@ -35,7 +35,7 @@ export default function Header() {
         setActiveHref(hash);
         return;
       }
-      setActiveHref("#services");
+      setActiveHref(NAV_ITEMS[0].href);
     };
 
     setFromHash();
@@ -51,9 +51,9 @@ export default function Header() {
         position: "sticky",
         top: 0,
         zIndex: 50,
-        background: "rgba(2, 6, 23, 0.55)",
-        backdropFilter: "blur(18px) saturate(1.15)",
-        borderBottom: "1px solid rgba(148, 163, 184, 0.2)",
+        background: "linear-gradient(180deg, rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.55))",
+        backdropFilter: "blur(18px) saturate(1.2)",
+        borderBottom: "1px solid rgba(148, 163, 184, 0.18)",
       }}
     >
       <Container maxWidth="lg">
@@ -61,22 +61,25 @@ export default function Header() {
           direction="row"
           alignItems="center"
           justifyContent="space-between"
-          sx={{ minHeight: 88 }}
+          sx={{ minHeight: 90, gap: 3 }}
         >
           <Link
             href="#hero"
             underline="none"
             color="inherit"
-            sx={{ display: "flex", alignItems: "center", gap: 1.25 }}
+            sx={{ display: "flex", alignItems: "center", gap: 1.5 }}
           >
             <Box
               sx={{
-                width: 64,
-                height: 64,
+                width: 62,
+                height: 62,
                 borderRadius: "999px",
                 overflow: "hidden",
                 display: "grid",
                 placeItems: "center",
+                border: "1px solid rgba(148, 163, 184, 0.25)",
+                background: "rgba(15, 23, 42, 0.35)",
+                boxShadow: "0 12px 28px rgba(2, 6, 23, 0.35)",
               }}
             >
               <Image
@@ -90,7 +93,11 @@ export default function Header() {
             <Box>
               <Typography
                 variant="subtitle1"
-                sx={{ fontWeight: 700, color: "#f9fafb" }}
+                sx={{
+                  fontWeight: 700,
+                  color: "#f9fafb",
+                  letterSpacing: "0.02em",
+                }}
               >
                 3Craft Digital
               </Typography>
@@ -98,8 +105,8 @@ export default function Header() {
                 variant="caption"
                 sx={{
                   textTransform: "uppercase",
-                  letterSpacing: "0.16em",
-                  color: "#6b7280",
+                  letterSpacing: "0.22em",
+                  color: "rgba(148, 163, 184, 0.85)",
                 }}
               >
                 Design that demands attention
@@ -120,21 +127,23 @@ export default function Header() {
                 underline="none"
                 onClick={() => setActiveHref(item.href)}
                 sx={{
-                  color: "rgba(255,255,255,0.82)",
+                  color: "rgba(255,255,255,0.78)",
                   fontWeight: 600,
+                  fontSize: "0.95rem",
                   position: "relative",
+                  paddingBottom: "6px",
                   "&:hover": { color: "#fff" },
                   ...(activeHref === item.href && {
                     color: "#fff",
                     "&::after": {
                       content: '""',
                       position: "absolute",
-                      left: 0,
-                      bottom: -6,
-                      width: "100%",
+                      left: "10%",
+                      right: "10%",
+                      bottom: 0,
                       height: 2,
                       borderRadius: 999,
-                      background: "rgba(59,130,246,0.9)",
+                      background: "linear-gradient(90deg, rgba(59,130,246,0), rgba(59,130,246,0.95), rgba(59,130,246,0))",
                     },
                   }),
                 }}
@@ -152,12 +161,13 @@ export default function Header() {
                 display: { xs: "none", md: "inline-flex" },
                 textTransform: "none",
                 fontWeight: 600,
-                borderRadius: "10px",
+                borderRadius: "999px",
+                px: 2.4,
                 background:
                   "linear-gradient(135deg, rgba(59,130,246,0.92), rgba(29,78,216,0.92))",
                 boxShadow: "0 14px 34px rgba(15, 23, 42, 0.45)",
                 "&:hover": {
-                  background: "rgba(29, 78, 216, 0.95)",
+                  background: "linear-gradient(135deg, rgba(59,130,246,1), rgba(29,78,216,1))",
                 },
               }}
             >
@@ -171,8 +181,8 @@ export default function Header() {
                 width: 44,
                 height: 44,
                 borderRadius: "12px",
-                border: "1px solid #1f2937",
-                background: "rgba(2, 6, 23, 0.6)",
+                border: "1px solid rgba(148, 163, 184, 0.25)",
+                background: "rgba(2, 6, 23, 0.55)",
               }}
               aria-label="Open menu"
             >
@@ -207,9 +217,9 @@ export default function Header() {
         onClose={() => setOpen(false)}
         PaperProps={{
           sx: {
-            background: "rgba(2, 6, 23, 0.9)",
-            backdropFilter: "blur(16px)",
-            borderBottom: "1px solid rgba(148, 163, 184, 0.2)",
+            background: "rgba(2, 6, 23, 0.95)",
+            backdropFilter: "blur(18px)",
+            borderBottom: "1px solid rgba(148, 163, 184, 0.18)",
           },
         }}
       >
@@ -245,7 +255,7 @@ export default function Header() {
               sx={{
                 textTransform: "none",
                 fontWeight: 600,
-                borderRadius: "12px",
+                borderRadius: "999px",
                 background:
                   "linear-gradient(135deg, rgba(59,130,246,0.92), rgba(29,78,216,0.92))",
               }}

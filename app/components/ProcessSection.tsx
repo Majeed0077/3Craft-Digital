@@ -1,12 +1,13 @@
-// components/ProcessSection.tsx
+﻿// components/ProcessSection.tsx
 
 export default function ProcessSection() {
   return (
     <section id="process">
       <div className="container">
         <div className="section-header">
+          <div className="section-kicker">Process</div>
           <h2>How projects run with us</h2>
-          <p>A simple 4-step pipeline so you always know what’s happening next.</p>
+          <p>A simple 4-step pipeline so you always know what's happening next.</p>
         </div>
 
         <div className="process-steps">
@@ -14,7 +15,7 @@ export default function ProcessSection() {
             <div className="process-circle">1</div>
             <h3>Discover</h3>
             <p>
-              We clarify your goals, audience, and style so we’re not guessing
+              We clarify your goals, audience, and style so we're not guessing
               in Figma.
             </p>
           </div>
