@@ -1,9 +1,21 @@
 ﻿"use client";
+
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
-  Box,Button,Container,Drawer,IconButton,Link,List,
-  ListItemButton,ListItemText,Stack,Typography,} from "@mui/material";
+  Box,
+  Button,
+  Container,
+  Drawer,
+  IconButton,
+  Link,
+  List,
+  ListItemButton,
+  ListItemText,
+  Stack,
+  Typography,
+} from "@mui/material";
+
 const NAV_ITEMS = [
   { href: "#hero", label: "Home" },
   { href: "#services", label: "Services" },
@@ -12,22 +24,53 @@ const NAV_ITEMS = [
   { href: "#testimonials", label: "Clients" },
   { href: "#contact", label: "Contact" },
 ];
+
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [activeHref, setActiveHref] = useState<string>(NAV_ITEMS[0].href);
+  const lastHrefRef = useRef<string>(NAV_ITEMS[0].href);
+
+  const handleNavClick = (href: string) => (event: React.MouseEvent) => {
+    event.preventDefault();
+    const target = document.querySelector<HTMLElement>(href);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+      window.history.pushState(null, "", href);
+      setActiveHref(href);
+    }
+  };
+
   useEffect(() => {
-    const setFromHash = () => {
-      const hash = window.location.hash;
-      if (hash && NAV_ITEMS.some((item) => item.href === hash)) {
-        setActiveHref(hash);
-        return;
+    const sections = NAV_ITEMS.map((item) => {
+      const el = document.querySelector<HTMLElement>(item.href);
+      return { href: item.href, el };
+    }).filter((item): item is { href: string; el: HTMLElement } => Boolean(item.el));
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (!visible) return;
+        const nextHref = `#${visible.target.id}`;
+        if (lastHrefRef.current !== nextHref) {
+          lastHrefRef.current = nextHref;
+          setActiveHref(nextHref);
+        }
+      },
+      {
+        rootMargin: "-45% 0px -50% 0px",
+        threshold: [0.1, 0.2, 0.4, 0.6],
       }
-      setActiveHref(NAV_ITEMS[0].href);
-    };
-    setFromHash();
-    window.addEventListener("hashchange", setFromHash);
-    return () => window.removeEventListener("hashchange", setFromHash);
+    );
+
+    sections.forEach((section) => observer.observe(section.el));
+    return () => observer.disconnect();
   }, []);
+
   return (
     <Box
       component="header"
@@ -35,7 +78,8 @@ export default function Header() {
         position: "sticky",
         top: 0,
         zIndex: 50,
-        background: "linear-gradient(180deg, rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.55))",
+        background:
+          "linear-gradient(180deg, rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.55))",
         backdropFilter: "blur(18px) saturate(1.2)",
         borderBottom: "1px solid rgba(148, 163, 184, 0.18)",
       }}
@@ -51,6 +95,7 @@ export default function Header() {
             href="#hero"
             underline="none"
             color="inherit"
+            onClick={handleNavClick("#hero")}
             sx={{ display: "flex", alignItems: "center", gap: 1.5 }}
           >
             <Box
@@ -109,7 +154,7 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 underline="none"
-                onClick={() => setActiveHref(item.href)}
+                onClick={handleNavClick(item.href)}
                 sx={{
                   color: "rgba(255,255,255,0.78)",
                   fontWeight: 600,
@@ -127,7 +172,8 @@ export default function Header() {
                       bottom: 0,
                       height: 2,
                       borderRadius: 999,
-                      background: "linear-gradient(90deg, rgba(59,130,246,0), rgba(59,130,246,0.95), rgba(59,130,246,0))",
+                      background:
+                        "linear-gradient(90deg, rgba(59,130,246,0), rgba(59,130,246,0.95), rgba(59,130,246,0))",
                     },
                   }),
                 }}
@@ -151,7 +197,8 @@ export default function Header() {
                   "linear-gradient(135deg, rgba(59,130,246,0.92), rgba(29,78,216,0.92))",
                 boxShadow: "0 14px 34px rgba(15, 23, 42, 0.45)",
                 "&:hover": {
-                  background: "linear-gradient(135deg, rgba(59,130,246,1), rgba(29,78,216,1))",
+                  background:
+                    "linear-gradient(135deg, rgba(59,130,246,1), rgba(29,78,216,1))",
                 },
               }}
             >
@@ -214,8 +261,8 @@ export default function Header() {
                   key={item.href}
                   component="a"
                   href={item.href}
-                  onClick={() => {
-                    setActiveHref(item.href);
+                  onClick={(event) => {
+                    handleNavClick(item.href)(event);
                     setOpen(false);
                   }}
                   sx={{
