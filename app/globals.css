@@ -63,12 +63,17 @@ body {
   overflow: hidden;
 }
 
+.bg-motion-inner {
+  position: absolute;
+  inset: -10%;
+}
+
 .bg-orb {
   position: absolute;
-  width: 520px;
-  height: 520px;
+  width: 540px;
+  height: 540px;
   border-radius: 999px;
-  filter: blur(24px);
+  filter: blur(26px);
   opacity: 0.35;
   mix-blend-mode: screen;
 }
@@ -89,6 +94,12 @@ body {
   left: 10%;
   bottom: -200px;
   background: radial-gradient(circle, rgba(14, 165, 233, 0.6), transparent 70%);
+}
+
+.orb-4 {
+  right: 12%;
+  bottom: -160px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.55), transparent 70%);
 }
 
 a {
@@ -335,7 +346,10 @@ nav a:hover::after {
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.68);
+  color: transparent;
+  background: linear-gradient(90deg, #93c5fd, #ffffff 60%);
+  -webkit-background-clip: text;
+  background-clip: text;
   margin-bottom: 12px;
 }
 
@@ -373,6 +387,19 @@ nav a:hover::after {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(
+    circle at 40% 30%,
+    rgba(59, 130, 246, 0.25),
+    transparent 55%
+  );
+  filter: blur(40px);
+  z-index: 0;
 }
 
 .hero-main-badge {
@@ -472,6 +499,29 @@ nav a:hover::after {
   justify-content: center;
 }
 
+.hero-orbit-ring {
+  position: absolute;
+  border-radius: 999px;
+  border: 1px solid rgba(147, 197, 253, 0.12);
+  box-shadow: inset 0 0 30px rgba(59, 130, 246, 0.2);
+  animation: ringFloat 10s ease-in-out infinite;
+  z-index: 0;
+}
+
+.hero-orbit-ring.ring-1 {
+  width: 360px;
+  height: 360px;
+  opacity: 0.45;
+  animation-duration: 12s;
+}
+
+.hero-orbit-ring.ring-2 {
+  width: 430px;
+  height: 430px;
+  opacity: 0.25;
+  animation-duration: 16s;
+}
+
 .hero-orbit-circle {
   width: 260px;
   height: 260px;
@@ -487,6 +537,7 @@ nav a:hover::after {
     inset 0 10px 30px rgba(255, 255, 255, 0.2),
     inset 0 -18px 40px rgba(3, 7, 18, 0.55);
   animation: heroCirclePulse 7s ease-in-out infinite alternate;
+  z-index: 1;
 }
 
 .hero-orbit-circle::before {
@@ -518,25 +569,27 @@ nav a:hover::after {
 .hero-orbit-card {
   position: absolute;
   max-width: 230px;
-  background: #ffffff;
+  background: rgba(15, 23, 42, 0.72);
   border-radius: 16px;
   padding: 14px 16px;
   box-shadow:
-    0 16px 40px rgba(15, 23, 42, 0.25),
-    0 0 0 1px rgba(15, 23, 42, 0.03);
-  color: #0f172a;
+    0 20px 50px rgba(2, 6, 23, 0.55),
+    inset 0 0 0 1px rgba(148, 163, 184, 0.16);
+  color: #e5e7eb;
   font-size: 0.85rem;
+  backdrop-filter: blur(8px);
+  z-index: 3;
 }
 
 .hero-orbit-card h4 {
   font-size: 0.92rem;
   margin-bottom: 4px;
-  color: #0f172a;
+  color: #f8fafc;
 }
 
 .hero-orbit-card p {
   font-size: 0.8rem;
-  color: #6b7280;
+  color: rgba(226, 232, 240, 0.72);
 }
 
 /* Positions + animation */
@@ -564,8 +617,8 @@ nav a:hover::after {
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  background: #e5e7eb;
-  color: #4b5563;
+  background: rgba(148, 163, 184, 0.2);
+  color: rgba(226, 232, 240, 0.8);
   margin-bottom: 7px;
 }
 
@@ -622,6 +675,18 @@ nav a:hover::after {
   }
   100% {
     transform: translate(-4px, -4px);
+  }
+}
+
+@keyframes ringFloat {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.02);
+  }
+  100% {
+    transform: translateY(4px) scale(0.99);
   }
 }
 
@@ -1531,5 +1596,33 @@ footer {
 
   .bg-motion {
     display: none;
+  }
+
+  .scroll-toggle {
+    animation: none;
+  }
+
+  .scroll-toggle::before {
+    animation: none;
+  }
+}
+
+.scroll-toggle {
+  position: relative;
+}
+
+.scroll-toggle::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 999px;
+  border: 1px dashed rgba(147, 197, 253, 0.6);
+  opacity: 0.7;
+  animation: scrollSpin 6s linear infinite;
+}
+
+@keyframes scrollSpin {
+  to {
+    transform: rotate(360deg);
   }
 }

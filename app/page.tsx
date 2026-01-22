@@ -10,6 +10,7 @@ import ProcessSection from "./components/ProcessSection";
 import TestimonialsSection from "./components/TestimonialsSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
+import ScrollToggle from "./components/ScrollToggle";
 
 export default function HomePage() {
   return (
@@ -24,6 +25,7 @@ export default function HomePage() {
       <TestimonialsSection />
       <ContactSection />
       <Footer />
+      <ScrollToggle />
     </>
   );
 }

@@ -104,9 +104,11 @@ if (legacy.addListener) {
           className="hero-visual hero-orbit"
           style={{
             transform: `translate(${offset.x}px, ${offset.y}px)`,
-            transition: "transform 0.04s ease-out", // was 0.08
+            transition: "transform 0.08s ease-out",
           }}
         >
+          <div className="hero-orbit-ring ring-1" />
+          <div className="hero-orbit-ring ring-2" />
           <div className="hero-orbit-circle" />
 
           {/* LEFT FLOATING CARD */}

@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -26,6 +26,23 @@ const NAV_ITEMS = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState<string>("#services");
+
+  useEffect(() => {
+    const setFromHash = () => {
+      const hash = window.location.hash;
+      if (hash && NAV_ITEMS.some((item) => item.href === hash)) {
+        setActiveHref(hash);
+        return;
+      }
+      setActiveHref("#services");
+    };
+
+    setFromHash();
+    window.addEventListener("hashchange", setFromHash);
+    return () => window.removeEventListener("hashchange", setFromHash);
+  }, []);
+
 
   return (
     <Box
@@ -101,11 +118,25 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 underline="none"
+                onClick={() => setActiveHref(item.href)}
                 sx={{
                   color: "rgba(255,255,255,0.82)",
                   fontWeight: 600,
                   position: "relative",
                   "&:hover": { color: "#fff" },
+                  ...(activeHref === item.href && {
+                    color: "#fff",
+                    "&::after": {
+                      content: '""',
+                      position: "absolute",
+                      left: 0,
+                      bottom: -6,
+                      width: "100%",
+                      height: 2,
+                      borderRadius: 999,
+                      background: "rgba(59,130,246,0.9)",
+                    },
+                  }),
                 }}
               >
                 {item.label}
@@ -190,11 +221,17 @@ export default function Header() {
                   key={item.href}
                   component="a"
                   href={item.href}
-                  onClick={() => setOpen(false)}
+                  onClick={() => {
+                    setActiveHref(item.href);
+                    setOpen(false);
+                  }}
                   sx={{
                     borderRadius: "12px",
                     color: "rgba(255,255,255,0.85)",
                     "&:hover": { background: "rgba(59, 130, 246, 0.12)" },
+                    ...(activeHref === item.href && {
+                      background: "rgba(59, 130, 246, 0.2)",
+                    }),
                   }}
                 >
                   <ListItemText primary={item.label} />
@@ -218,6 +255,7 @@ export default function Header() {
           </Stack>
         </Container>
       </Drawer>
+
     </Box>
   );
 }
