@@ -1,7 +1,5 @@
 ﻿// components/Footer.tsx
-
 import { Box, Container, Grid, Link, Stack, Typography } from "@mui/material";
-
 const SOCIAL_LINKS = [
   {
     href: "https://www.facebook.com/profile.php?id=61576706516191&sk=about_places",
@@ -24,14 +22,12 @@ const SOCIAL_LINKS = [
     path: "M9.4 11.6c1.2-.6 1.8-1.5 1.8-2.8 0-2.2-1.6-3.3-4.5-3.3H3v13.5h4.2c3.1 0 5.1-1.3 5.1-3.9 0-1.8-1.2-3-2.9-3.5zM5.6 7.4h1.7c1.1 0 1.8.5 1.8 1.4 0 1-.7 1.5-1.9 1.5H5.6V7.4zm1.8 8.7H5.6v-3.6h1.9c1.4 0 2.3.6 2.3 1.8 0 1.2-.9 1.8-2.3 1.8zm12.6-5.1c-2.6 0-4.4 1.9-4.4 4.6 0 2.8 1.8 4.6 4.7 4.6 2 0 3.5-1 4-2.7h-2.2c-.2.5-.8.9-1.7.9-1.2 0-2-.7-2.1-2h6.2v-.5c0-2.6-1.6-4.9-4.5-4.9zm0 1.8c1.1 0 1.8.6 2 1.7h-4c.2-1.1 1-1.7 2-1.7zm-2.7-4.2h5.4V7h-5.4v1.6z",
   },
 ];
-
 const NAV_LINKS = [
   { href: "#hero", label: "Home" },
   { href: "#services", label: "Services" },
   { href: "#portfolio", label: "Work" },
   { href: "#contact", label: "Contact" },
 ];
-
 export default function Footer() {
   return (
     <Box
@@ -73,7 +69,6 @@ export default function Footer() {
               </Typography>
             </Stack>
           </Grid>
-
           <Grid size={{ xs: 6, md: 2 }}>
             <Stack spacing={1.2}>
               <Typography
@@ -100,9 +95,14 @@ export default function Footer() {
               ))}
             </Stack>
           </Grid>
-
           <Grid size={{ xs: 6, md: 2 }}>
             <Stack spacing={1.6} sx={{ alignItems: "flex-start" }}>
+              <Typography
+                variant="overline"
+                sx={{ color: "rgba(255,255,255,0.55)", letterSpacing: "0.28em" }}
+              >
+                Connect
+              </Typography>
               <Stack direction="row" spacing={1.5}>
                 {SOCIAL_LINKS.map((item) => (
                   <Link
@@ -124,7 +124,7 @@ export default function Footer() {
                       color: "rgba(255,255,255,0.85)",
                       backdropFilter: "blur(8px)",
                       transition:
-                        "transform 0.2s ease, border 0.2s ease, background 0.2s ease",
+                      "transform 0.2s ease, border 0.2s ease, background 0.2s ease",
                       "&:hover": {
                         transform: "translateY(-1px)",
                         borderColor: "rgba(59, 130, 246, 0.55)",
@@ -142,16 +142,9 @@ export default function Footer() {
                   </Link>
                 ))}
               </Stack>
-              <Typography
-                variant="overline"
-                sx={{ color: "rgba(255,255,255,0.55)", letterSpacing: "0.28em" }}
-              >
-                Connect
-              </Typography>
             </Stack>
           </Grid>
         </Grid>
-
         <Box
           sx={{
             mt: 5,

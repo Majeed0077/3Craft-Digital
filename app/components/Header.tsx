@@ -1,33 +1,20 @@
 ﻿"use client";
-
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import {
-  Box,
-  Button,
-  Container,
-  Drawer,
-  IconButton,
-  Link,
-  List,
-  ListItemButton,
-  ListItemText,
-  Stack,
-  Typography,
-} from "@mui/material";
-
+  Box,Button,Container,Drawer,IconButton,Link,List,
+  ListItemButton,ListItemText,Stack,Typography,} from "@mui/material";
 const NAV_ITEMS = [
+  { href: "#hero", label: "Home" },
   { href: "#services", label: "Services" },
   { href: "#portfolio", label: "Work" },
   { href: "#process", label: "Process" },
   { href: "#testimonials", label: "Clients" },
   { href: "#contact", label: "Contact" },
 ];
-
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [activeHref, setActiveHref] = useState<string>(NAV_ITEMS[0].href);
-
   useEffect(() => {
     const setFromHash = () => {
       const hash = window.location.hash;
@@ -37,13 +24,10 @@ export default function Header() {
       }
       setActiveHref(NAV_ITEMS[0].href);
     };
-
     setFromHash();
     window.addEventListener("hashchange", setFromHash);
     return () => window.removeEventListener("hashchange", setFromHash);
   }, []);
-
-
   return (
     <Box
       component="header"
@@ -210,7 +194,6 @@ export default function Header() {
           </Stack>
         </Stack>
       </Container>
-
       <Drawer
         anchor="top"
         open={open}
@@ -265,7 +248,6 @@ export default function Header() {
           </Stack>
         </Container>
       </Drawer>
-
     </Box>
   );
 }

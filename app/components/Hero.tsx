@@ -77,11 +77,11 @@ if (legacy.addListener) {
         {/* LEFT TEXT BLOCK */}
         <div>
           <div className="hero-kicker">Performance-Driven Creative Studio</div>
-          <h1>Design that demands attention and drives action.</h1>
+          <h1>Design that demands attention & drives action.</h1>
           <p className="hero-subtext">
-            3Craft Digital builds modern brand identities and clean,
+            3Craft Digital builds modern brand identities & clean,
             conversion-focused CMS websites. A compact 3-specialist studio
-            combining brand design, visual systems, and technical development
+            combining brand design, visual systems, & technical development
             into one sharp digital experience.
           </p>
           <div className="hero-buttons">
