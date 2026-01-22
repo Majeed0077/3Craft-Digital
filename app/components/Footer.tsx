@@ -49,7 +49,7 @@ export default function Footer() {
     >
       <Container maxWidth="lg">
         <Grid container spacing={{ xs: 4, md: 6 }}>
-          <Grid item xs={12} md={5}>
+          <Grid size={{ xs: 12, md: 5 }}>
             <Stack spacing={1.5}>
               <Typography
                 variant="h6"
@@ -74,7 +74,7 @@ export default function Footer() {
             </Stack>
           </Grid>
 
-          <Grid item xs={6} md={2}>
+          <Grid size={{ xs: 6, md: 2 }}>
             <Stack spacing={1.2}>
               <Typography
                 variant="overline"
@@ -101,7 +101,7 @@ export default function Footer() {
             </Stack>
           </Grid>
 
-          <Grid item xs={6} md={2}>
+          <Grid size={{ xs: 6, md: 2 }}>
             <Stack spacing={1.6} sx={{ alignItems: "flex-start" }}>
               <Stack direction="row" spacing={1.5}>
                 {SOCIAL_LINKS.map((item) => (
