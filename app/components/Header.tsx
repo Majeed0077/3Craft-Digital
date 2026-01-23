@@ -247,16 +247,37 @@ export default function Header() {
         onClose={() => setOpen(false)}
         PaperProps={{
           sx: {
-            background: "rgba(2, 6, 23, 0.95)",
-            backdropFilter: "blur(18px)",
+            background:
+              "linear-gradient(180deg, rgba(2, 6, 23, 0.98), rgba(2, 6, 23, 0.9))",
+            backdropFilter: "blur(20px) saturate(1.15)",
             borderBottom: "1px solid rgba(148, 163, 184, 0.18)",
           },
         }}
       >
         <Container maxWidth="lg" sx={{ py: 3 }}>
-          <Stack spacing={2}>
-            <List sx={{ p: 0 }}>
-              {NAV_ITEMS.map((item) => (
+          <Stack spacing={2.5}>
+            <Typography
+              variant="overline"
+              sx={{
+                color: "rgba(148, 163, 184, 0.7)",
+                letterSpacing: "0.38em",
+                fontSize: "0.62rem",
+              }}
+            >
+              Navigate
+            </Typography>
+            <List
+              sx={{
+                p: 0,
+                display: "grid",
+                gap: 1,
+                border: "1px solid rgba(148, 163, 184, 0.16)",
+                borderRadius: "16px",
+                background: "rgba(15, 23, 42, 0.35)",
+                boxShadow: "0 18px 36px rgba(2, 6, 23, 0.35)",
+              }}
+            >
+              {NAV_ITEMS.map((item, index) => (
                 <ListItemButton
                   key={item.href}
                   component="a"
@@ -266,11 +287,21 @@ export default function Header() {
                     setOpen(false);
                   }}
                   sx={{
-                    borderRadius: "12px",
+                    px: 2.5,
+                    py: 1.4,
+                    borderRadius: index === 0 ? "16px 16px 12px 12px" : "12px",
                     color: "rgba(255,255,255,0.85)",
+                    fontWeight: 600,
+                    letterSpacing: "0.02em",
+                    borderTop:
+                      index === 0
+                        ? "none"
+                        : "1px solid rgba(148, 163, 184, 0.08)",
                     "&:hover": { background: "rgba(59, 130, 246, 0.12)" },
                     ...(activeHref === item.href && {
-                      background: "rgba(59, 130, 246, 0.2)",
+                      background:
+                        "linear-gradient(90deg, rgba(59,130,246,0.28), rgba(59,130,246,0.05))",
+                      color: "#fff",
                     }),
                   }}
                 >
@@ -285,9 +316,15 @@ export default function Header() {
               sx={{
                 textTransform: "none",
                 fontWeight: 600,
-                borderRadius: "999px",
+                borderRadius: "14px",
+                py: 1.1,
+                width: "100%",
+                maxWidth: 360,
+                alignSelf: "center",
+                fontSize: "0.95rem",
                 background:
                   "linear-gradient(135deg, rgba(59,130,246,0.92), rgba(29,78,216,0.92))",
+                boxShadow: "0 14px 30px rgba(2, 6, 23, 0.35)",
               }}
             >
               Start a Project
