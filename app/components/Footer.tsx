@@ -108,7 +108,17 @@ export default function Footer() {
               >
                 Connect
               </Typography>
-              <Stack direction="row" spacing={1.5}>
+              <Stack
+                direction="row"
+                spacing={1.5}
+                sx={{
+                  flexWrap: { xs: "wrap", md: "nowrap" },
+                  justifyContent: { xs: "center", md: "flex-start" },
+                  alignItems: { xs: "center", md: "flex-start" },
+                  rowGap: 1.5,
+                  columnGap: 1.5,
+                }}
+              >
                 {SOCIAL_LINKS.map((item) => (
                   <Link
                     key={item.label}

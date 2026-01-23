@@ -1653,6 +1653,29 @@ footer {
   .hero-main-badge {
     grid-template-columns: 1fr;
   }
+
+  .portfolio-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .portfolio-meta .pill {
+    max-width: 100%;
+    white-space: nowrap;
+  }
+
+  .why-top {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 860px) {
+  .portfolio-grid,
+  .why-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 /* ===== Mobile Nav (Hamburger) ===== */
 .mobile-nav-toggle {
