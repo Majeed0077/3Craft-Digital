@@ -137,6 +137,7 @@ export default function ContactSection() {
     <section id="contact">
       <div className="container contact-inner">
         <div>
+          <div className="section-kicker">Contact</div>
           <div className="contact-tag">Let’s work together</div>
           <h2>Tell us what you need. We’ll tell you how we’d solve it.</h2>
           <p>
@@ -144,10 +145,16 @@ export default function ContactSection() {
             reply with a clear game plan, pricing, and timeline, no fluff, no
             pressure.
           </p>
-          <p style={{ marginTop: "18px", fontSize: "0.95rem" }}>
-            Prefer Upwork? We can also work fully through Upwork with milestones
-            and protection.
-          </p>
+          <div className="contact-meta">
+            <div>
+              <span className="contact-meta-label">Response time</span>
+              <strong>Under 15 minutes</strong>
+            </div>
+            <div>
+              <span className="contact-meta-label">Availability</span>
+              <strong>Mon - Sat</strong>
+            </div>
+          </div>
         </div>
 
         <form className="contact-form" onSubmit={handleSubmit} noValidate>

@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --blue: #1a6cff;
   --blue-dark: #1553c4;
   --black: #000000;
@@ -1241,7 +1241,7 @@ nav a:hover::after {
 }
 
 .testimonial-rating::before {
-  content: "★★★★★";
+  content: "⭐⭐⭐⭐⭐";
   color: #facc15;
   font-size: 0.78rem;
   letter-spacing: 0.08em;
@@ -1313,15 +1313,51 @@ nav a:hover::after {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-weight: 600;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.92);
   margin-bottom: 8px;
 }
+
+.contact-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 26px;
+  margin: 18px 0 8px;
+}
+
+.contact-meta > div {
+  display: grid;
+  gap: 4px;
+  min-width: 160px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: rgba(226, 232, 240, 0.9);
+  backdrop-filter: blur(12px);
+}
+
+.contact-meta-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(148, 163, 184, 0.75);
+}
+
+.contact-meta strong {
+  font-size: 0.95rem;
+  color: #f8fafc;
+}
+
 .contact-form {
-  background: rgba(15, 23, 42, 0.55);
+  background: linear-gradient(
+    160deg,
+    rgba(15, 23, 42, 0.78),
+    rgba(2, 6, 23, 0.9)
+  );
   border-radius: var(--radius-lg);
   padding: 26px 24px;
   box-shadow: var(--glass-shadow);
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(148, 163, 184, 0.2);
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(18px);
@@ -1331,8 +1367,8 @@ nav a:hover::after {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 0 0, rgba(37, 99, 235, 0.18), transparent 55%),
-    radial-gradient(circle at 100% 0, rgba(34, 197, 94, 0.12), transparent 45%);
+    radial-gradient(circle at 0 0, rgba(37, 99, 235, 0.2), transparent 55%),
+    radial-gradient(circle at 100% 0, rgba(59, 130, 246, 0.16), transparent 45%);
   pointer-events: none;
 }
 .contact-form > * {
