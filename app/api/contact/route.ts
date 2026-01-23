@@ -79,6 +79,8 @@ export async function POST(request: Request) {
       );
     }
 
+    // Auto-reply disabled until a verified domain is available.
+
     return NextResponse.json({ message: "Message sent." }, { status: 200 });
   } catch {
     return NextResponse.json(

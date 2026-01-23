@@ -34,6 +34,7 @@ html {
   color-scheme: dark;
   scroll-behavior: smooth;
   scroll-padding-top: 96px;
+  overflow-x: hidden;
 }
 
 body {
@@ -46,6 +47,7 @@ body {
   background: linear-gradient(120deg, #000270 4%, #001235 50%, #000000 78%);
   line-height: 1.6;
   min-height: 100vh;
+  overflow-x: hidden;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -1902,6 +1904,7 @@ footer {
 }
 .scroll-toggle {
   position: relative;
+  margin-left: 500px;
 }
 .scroll-toggle::before {
   content: "";

@@ -35,8 +35,8 @@ export default function ScrollToggle() {
       className="scroll-toggle"
       sx={{
         position: "fixed",
-        right: { xs: 16, md: 28 },
-        bottom: { xs: 16, md: 28 },
+        right: { xs: "max(16px, env(safe-area-inset-right))", md: 28 },
+        bottom: { xs: "max(16px, env(safe-area-inset-bottom))", md: 28 },
         width: 48,
         height: 48,
         borderRadius: "999px",
