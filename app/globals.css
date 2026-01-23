@@ -1879,6 +1879,25 @@ footer {
     right: 2%;
     top: -10%;
   }
+
+  .bg-motion {
+    display: none;
+  }
+
+  .service-card,
+  .portfolio-item,
+  .why-card,
+  .process-step,
+  .testimonial-card,
+  .contact-form {
+    box-shadow: 0 10px 24px rgba(2, 6, 23, 0.3);
+    backdrop-filter: blur(8px);
+  }
+
+  .hero-orbit-circle,
+  .hero-orbit-card {
+    box-shadow: 0 18px 45px rgba(2, 6, 23, 0.4);
+  }
 }
 @media (max-width: 720px) {
   .logo-text-sub {
