@@ -75,8 +75,10 @@ export default function Header() {
     <Box
       component="header"
       sx={{
-        position: "sticky",
+        position: "fixed",
         top: 0,
+        left: 0,
+        width: "100%",
         zIndex: 50,
         background:
           "linear-gradient(180deg, rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.55))",
