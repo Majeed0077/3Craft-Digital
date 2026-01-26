@@ -141,6 +141,15 @@ export default function ServicesSection() {
             </p>
           </div>
         </div>
+
+        <div className="section-cta">
+          <p>Ready to plan a project? We will map scope, timeline, and next steps.</p>
+          <div className="section-cta-actions">
+            <a href="#contact" className="btn btn-primary">
+              Start a Project
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

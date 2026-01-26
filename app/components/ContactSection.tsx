@@ -138,10 +138,10 @@ export default function ContactSection() {
       <div className="container contact-inner">
         <div>
           <div className="section-kicker">Contact</div>
-          <div className="contact-tag">Let’s work together</div>
-          <h2>Tell us what you need. We’ll tell you how we’d solve it.</h2>
+          <div className="contact-tag">Start your project</div>
+          <h2>Tell us what you need. We'll tell you how we'd solve it.</h2>
           <p>
-            Send a quick overview of your brand, project, and deadline. We’ll
+            Send a quick overview of your brand, project, and deadline. We'll
             reply with a clear game plan, pricing, and timeline, no fluff, no
             pressure.
           </p>
@@ -219,7 +219,7 @@ export default function ContactSection() {
               aria-describedby={errors.service ? "service-error" : undefined}
             >
               <option value="" disabled>
-                Select a service…
+                Select a service...
               </option>
               {SERVICE_OPTIONS.map((opt) => (
                 <option key={opt} value={opt}>
@@ -270,7 +270,7 @@ export default function ContactSection() {
 
           {status === "success" && !globalError && (
             <div className="form-feedback form-feedback-success">
-              Message sent. We’ll get back to you shortly.
+              Message sent. We'll get back to you shortly.
             </div>
           )}
 
@@ -280,7 +280,7 @@ export default function ContactSection() {
             style={{ width: "100%" }}
             disabled={!canSubmit}
           >
-            {isLoading ? "Sending..." : "Send message"}
+            {isLoading ? "Sending..." : "Start a Project"}
           </button>
         </form>
       </div>

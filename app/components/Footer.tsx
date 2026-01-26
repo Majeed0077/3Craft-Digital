@@ -40,146 +40,165 @@ export default function Footer() {
       className="site-footer"
       sx={{
         position: "relative",
-        pt: { xs: 6, md: 8 },
+        pt: { xs: 5, md: 7 },
         pb: { xs: 4, md: 5 },
-        borderTop: "1px solid rgba(148, 163, 184, 0.18)",
-        background: "rgba(2, 6, 23, 0.35)",
-        backdropFilter: "blur(12px)",
+        borderTop: "1px solid rgba(148, 163, 184, 0.12)",
+        background: "#070b14",
         color: "rgba(255, 255, 255, 0.78)",
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={{ xs: 4, md: 6 }}>
-          <Grid size={{ xs: 12, md: 5 }}>
-            <Stack spacing={1.5}>
+        <Stack spacing={{ xs: 3.5, md: 4.5 }}>
+          <Box
+            sx={{
+              borderRadius: 2.5,
+              border: "1px solid rgba(148, 163, 184, 0.18)",
+              background: "rgba(12, 16, 26, 0.9)",
+              px: { xs: 2.5, md: 3.5 },
+              py: { xs: 2.5, md: 3 },
+            }}
+          >
+            <Stack spacing={1.4}>
               <Typography
-                variant="h6"
+                variant="h5"
                 sx={{
                   fontWeight: 700,
                   letterSpacing: "0.02em",
-                  background:
-                    "linear-gradient(120deg, #ffffff, #93c5fd 55%, #60a5fa 100%)",
-                  WebkitBackgroundClip: "text",
-                  color: "transparent",
+                  color: "#f8fafc",
                 }}
               >
                 3Craft Digital
               </Typography>
-              <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.7)" }}>
+              <Typography variant="body2" sx={{ color: "rgba(226, 232, 240, 0.75)" }}>
                 Design + Development Studio crafting brand systems and digital
                 experiences.
               </Typography>
-              <Typography variant="caption" sx={{ color: "rgba(255,255,255,0.55)" }}>
-                Location: NASTP Karachi
+              <Typography variant="caption" sx={{ color: "rgba(148, 163, 184, 0.8)" }}>
+                📍 NASTP Karachi
               </Typography>
             </Stack>
-          </Grid>
-          <Grid size={{ xs: 6, md: 2 }}>
-            <Stack spacing={1.2}>
-              <Typography
-                variant="overline"
-                sx={{ color: "rgba(255,255,255,0.55)", letterSpacing: "0.28em" }}
-              >
-                Explore
-              </Typography>
-              {NAV_LINKS.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  underline="none"
-                  color="inherit"
-                  sx={{
-                    fontWeight: 500,
-                    color: "rgba(255,255,255,0.85)",
-                    transition: "color 0.2s ease",
-                    "&:hover": { color: "#fff" },
-                  }}
+          </Box>
+
+          <Grid container spacing={{ xs: 3, md: 6 }}>
+            <Grid size={{ xs: 6, md: 6 }}>
+              <Stack spacing={1.4}>
+                <Typography
+                  variant="overline"
+                  sx={{ color: "rgba(148, 163, 184, 0.7)", letterSpacing: "0.3em" }}
                 >
-                  {item.label}
-                </Link>
-              ))}
-            </Stack>
-          </Grid>
-          <Grid size={{ xs: 6, md: 2 }}>
-            <Stack spacing={1.6} sx={{ alignItems: "flex-start" }}>
-              <Typography
-                variant="overline"
-                sx={{ color: "rgba(255,255,255,0.55)", letterSpacing: "0.28em" }}
-              >
-                Connect
-              </Typography>
-              <Stack
-                direction="row"
-                spacing={1.5}
-                sx={{
-                  flexWrap: { xs: "wrap", md: "nowrap" },
-                  justifyContent: { xs: "center", md: "flex-start" },
-                  alignItems: { xs: "center", md: "flex-start" },
-                  rowGap: 1.5,
-                  columnGap: 1.5,
-                }}
-              >
-                {SOCIAL_LINKS.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    underline="none"
-                    aria-label={item.label}
-                    sx={{
-                      width: 40,
-                      height: 40,
-                      borderRadius: "999px",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      background: "rgba(15, 23, 42, 0.55)",
-                      border: "1px solid rgba(148, 163, 184, 0.22)",
-                      color: "rgba(255,255,255,0.85)",
-                      backdropFilter: "blur(8px)",
-                      transition:
-                      "transform 0.2s ease, border 0.2s ease, background 0.2s ease",
-                      "&:hover": {
-                        transform: "translateY(-1px)",
-                        borderColor: "rgba(59, 130, 246, 0.55)",
-                        background: "rgba(59, 130, 246, 0.18)",
-                      },
-                    }}
-                  >
-                    <Box
-                      component="svg"
-                      viewBox="0 0 24 24"
-                      sx={{ width: 18, height: 18, fill: "currentColor" }}
+                  Explore
+                </Typography>
+                <Stack spacing={1.2}>
+                  {NAV_LINKS.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      underline="none"
+                      color="inherit"
+                      sx={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 1,
+                        fontWeight: 500,
+                        color: "rgba(226, 232, 240, 0.85)",
+                        transition: "color 0.2s ease",
+                        "&:hover": { color: "#ffffff" },
+                      }}
                     >
-                      <path d={item.path} />
-                    </Box>
-                  </Link>
-                ))}
+                      <Box
+                        component="svg"
+                        viewBox="0 0 24 24"
+                        sx={{
+                          width: 14,
+                          height: 14,
+                          fill: "none",
+                          stroke: "currentColor",
+                          strokeWidth: 2,
+                          opacity: 0.7,
+                        }}
+                      >
+                        <path d="M8 6l6 6-6 6" />
+                      </Box>
+                      {item.label}
+                    </Link>
+                  ))}
+                </Stack>
               </Stack>
-            </Stack>
+            </Grid>
+            <Grid size={{ xs: 6, md: 6 }}>
+              <Stack spacing={1.4}>
+                <Typography
+                  variant="overline"
+                  sx={{ color: "rgba(148, 163, 184, 0.7)", letterSpacing: "0.3em" }}
+                >
+                  Connect
+                </Typography>
+                <Stack spacing={1.2}>
+                  {SOCIAL_LINKS.map((item) => (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      underline="none"
+                      aria-label={item.label}
+                      sx={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 1.2,
+                        fontWeight: 500,
+                        color: "rgba(226, 232, 240, 0.85)",
+                        transition: "color 0.2s ease",
+                        "&:hover": { color: "#ffffff" },
+                      }}
+                    >
+                      <Box
+                        component="svg"
+                        viewBox="0 0 24 24"
+                        sx={{ width: 16, height: 16, fill: "currentColor", opacity: 0.8 }}
+                      >
+                        <path d={item.path} />
+                      </Box>
+                      {item.label}
+                    </Link>
+                  ))}
+                </Stack>
+              </Stack>
+            </Grid>
           </Grid>
-        </Grid>
-        <Box
-          sx={{
-            mt: 5,
-            pt: 2.5,
-            borderTop: "1px solid rgba(148, 163, 184, 0.12)",
-            display: "flex",
-            flexDirection: { xs: "column", md: "row" },
-            justifyContent: "space-between",
-            gap: 1,
-            fontSize: "0.82rem",
-            color: "rgba(255,255,255,0.5)",
-          }}
-        >
-          <Typography variant="caption" sx={{ color: "inherit" }}>
-            (c) 2025 3Craft Digital. All rights reserved.
-          </Typography>
-          <Typography variant="caption" sx={{ color: "inherit" }}>
-            Built in Karachi for global brands.
-          </Typography>
-        </Box>
+
+          <Box
+            sx={{
+              pt: 2.5,
+              borderTop: "1px solid rgba(148, 163, 184, 0.12)",
+              display: "grid",
+              gap: 1,
+              fontSize: "0.82rem",
+              color: "rgba(148, 163, 184, 0.7)",
+            }}
+          >
+            <Typography variant="caption" sx={{ color: "inherit" }}>
+              (c) 2025 3Craft Digital. All rights reserved.
+            </Typography>
+            <Typography variant="caption" sx={{ color: "inherit" }}>
+              From Karachi for global brands.
+            </Typography>
+            <Link
+              href="#hero"
+              underline="none"
+              sx={{
+                width: "fit-content",
+                fontSize: "0.82rem",
+                fontWeight: 600,
+                color: "rgba(226, 232, 240, 0.85)",
+                transition: "color 0.2s ease",
+                "&:hover": { color: "#ffffff" },
+              }}
+            >
+              Back to top ↑
+            </Link>
+          </Box>
+        </Stack>
       </Container>
     </Box>
   );

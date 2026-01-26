@@ -86,10 +86,10 @@ if (legacy.addListener) {
           </p>
           <div className="hero-buttons">
             <a href="#contact" className="btn btn-primary">
-              Get a custom quote
+              Start a Project
             </a>
             <a href="#portfolio" className="btn btn-outline">
-              See recent work
+              View Work
             </a>
           </div>
 

@@ -62,13 +62,44 @@ export default function Header() {
         }
       },
       {
-        rootMargin: "-45% 0px -50% 0px",
+        rootMargin: "-40% 0px -50% 0px",
         threshold: [0.1, 0.2, 0.4, 0.6],
       }
     );
 
     sections.forEach((section) => observer.observe(section.el));
-    return () => observer.disconnect();
+
+    let rafId: number | null = null;
+    const updateFromScroll = () => {
+      if (rafId !== null) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = null;
+        const scrollPos = window.scrollY + window.innerHeight * 0.35;
+        let currentHref = sections[0].href;
+        for (const section of sections) {
+          if (section.el.offsetTop <= scrollPos) {
+            currentHref = section.href;
+          }
+        }
+        if (lastHrefRef.current !== currentHref) {
+          lastHrefRef.current = currentHref;
+          setActiveHref(currentHref);
+        }
+      });
+    };
+
+    updateFromScroll();
+    window.addEventListener("scroll", updateFromScroll, { passive: true });
+    window.addEventListener("resize", updateFromScroll);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", updateFromScroll);
+      window.removeEventListener("resize", updateFromScroll);
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId);
+      }
+    };
   }, []);
 
   return (
