@@ -949,10 +949,26 @@ nav a:hover::after {
 }
 .portfolio-media img {
   width: 100%;
-  height: 140px;
+  height: 190px;
   object-fit: cover;
   display: block;
 }
+.portfolio-image-btn {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: block;
+  text-align: left;
+  border-radius: 10px;
+}
+.portfolio-image-btn:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
 
 .portfolio-item::before {
   content: "";
@@ -1031,6 +1047,88 @@ nav a:hover::after {
 
 .portfolio-item:hover::after {
   opacity: 1;
+}
+
+.portfolio-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2, 6, 23, 0.85);
+  z-index: 60;
+  padding: 24px 12px;
+}
+.portfolio-modal-content {
+  position: relative;
+  max-width: min(1100px, 100%);
+  width: 100%;
+  border-radius: 18px;
+  padding: 20px;
+  background: rgba(2, 6, 23, 0.95);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  box-shadow: var(--shadow-soft);
+}
+.portfolio-modal img {
+  width: 100%;
+  height: auto;
+  max-height: calc(100vh - 160px);
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+}
+.portfolio-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.75);
+  color: var(--white);
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+.portfolio-modal-close:hover {
+  transform: translateY(-1px);
+}
+
+.portfolio-modal-body {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) 48px;
+  gap: 12px;
+  align-items: center;
+  justify-items: center;
+}
+.portfolio-modal-nav {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(8, 12, 20, 0.8);
+  color: var(--white);
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.portfolio-modal-nav:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.portfolio-modal-nav:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+.portfolio-modal-counter {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  text-align: center;
+  color: rgba(226, 232, 240, 0.7);
 }
 
 /* Why */
