@@ -1,5 +1,5 @@
 ﻿// components/Footer.tsx
-import { Box, Button, Container, Grid, Link, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Link, Stack, Typography } from "@mui/material";
 
 const SOCIAL_LINKS = [
   {
@@ -64,16 +64,14 @@ export default function Footer() {
             gap: { xs: 3, md: 5 },
           }}
         >
-          <Grid
-            container
-            spacing={4}
+          <Box
             sx={{
               display: "grid",
               gridTemplateColumns: { xs: "1fr", md: "1.1fr 1fr" },
               gap: { xs: 3, md: 5 },
             }}
           >
-            <Grid item xs={12}>
+            <Box>
               <Stack spacing={1.5}>
                 <Typography
                   variant="h4"
@@ -156,22 +154,22 @@ export default function Footer() {
                   </Link>
                 </Stack>
               </Stack>
-            </Grid>
-            <Grid item xs={12}>
-              <Grid
-                container
-                spacing={2.5}
+            </Box>
+            <Box>
+              <Box
                 sx={{
+                  display: "grid",
                   gridTemplateColumns: {
                     xs: "repeat(2, minmax(0, 1fr))",
                     md: "repeat(2, minmax(0, 1fr))",
                   },
+                  gap: { xs: 2.5, md: 3 },
                   "@media (max-width: 360px)": {
                     gridTemplateColumns: "1fr",
                   },
                 }}
               >
-                <Grid item xs={12} sm={6}>
+                <Box>
                   <Stack spacing={1}>
                     <Typography
                       variant="overline"
@@ -217,8 +215,8 @@ export default function Footer() {
                       ))}
                     </Stack>
                   </Stack>
-                </Grid>
-                <Grid item xs={12} sm={6}>
+                </Box>
+                <Box>
                   <Stack spacing={1}>
                     <Typography
                       variant="overline"
@@ -259,10 +257,10 @@ export default function Footer() {
                       ))}
                     </Stack>
                   </Stack>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
           <Box
             sx={{
               borderTop: "1px solid rgba(255, 255, 255, 0.08)",
