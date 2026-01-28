@@ -74,6 +74,15 @@ export default function Footer() {
             <Box>
               <Stack spacing={1.5}>
                 <Typography
+                  variant="overline"
+                  sx={{
+                    letterSpacing: "0.32em",
+                    color: "rgba(148, 163, 184, 0.7)",
+                  }}
+                >
+                  LET’S WORK TOGETHER
+                </Typography>
+                <Typography
                   variant="h4"
                   sx={{
                     fontWeight: 700,
@@ -155,7 +164,7 @@ export default function Footer() {
                 </Stack>
               </Stack>
             </Box>
-            <Box>
+            <Box sx={{ alignSelf: { md: "stretch" } }}>
               <Box
                 sx={{
                   display: "grid",
@@ -283,6 +292,27 @@ export default function Footer() {
                 From Karachi for global brands.
               </Typography>
             </Stack>
+            <Link
+              href="#hero"
+              underline="none"
+              sx={{
+                border: "1px solid rgba(255, 255, 255, 0.22)",
+                borderRadius: 999,
+                px: 3,
+                py: 0.5,
+                fontWeight: 600,
+                color: "rgba(255, 255, 255, 0.85)",
+                transition: "color 0.2s ease, border-color 0.2s ease, transform 0.2s ease",
+                "&:hover": {
+                  color: "#ffffff",
+                  borderColor: "rgba(255, 255, 255, 0.4)",
+                  transform: "translateY(-2px)",
+                },
+                alignSelf: { xs: "flex-end", md: "auto" },
+              }}
+            >
+              Back to top ↑
+            </Link>
           </Box>
         </Box>
       </Container>
