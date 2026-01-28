@@ -42,23 +42,15 @@ export default function Footer() {
       component="footer"
       sx={{
         position: "relative",
-        background: "#030713",
+        background: "linear-gradient(180deg, rgba(3, 7, 19, 0.96), rgba(3, 7, 19, 1))",
         color: "rgba(255, 255, 255, 0.9)",
+        borderTop: "1px solid rgba(255, 255, 255, 0.06)",
         py: { xs: 6, md: 8 },
       }}
     >
-      <Container maxWidth="lg" sx={{ px: { xs: 2, md: 0 } }}>
+      <Container maxWidth="lg" sx={{ px: { xs: 2, md: 3 } }}>
         <Box
           sx={{
-            borderRadius: { xs: 20, md: 28 },
-            background: "#050b17",
-            border: "1px solid transparent",
-            backgroundImage:
-              "linear-gradient(#050b17, #050b17), linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01) 70%, rgba(255,255,255,0))",
-            backgroundOrigin: "border-box",
-            backgroundClip: "padding-box, border-box",
-            boxShadow: "0 32px 60px rgba(3, 8, 18, 0.45)",
-            p: { xs: 4, sm: 5 },
             display: "flex",
             flexDirection: "column",
             gap: { xs: 3, md: 5 },
@@ -272,9 +264,9 @@ export default function Footer() {
           </Box>
           <Box
             sx={{
-              borderTop: "1px solid rgba(255, 255, 255, 0.08)",
+              borderTop: "1px solid rgba(255, 255, 255, 0.06)",
               pt: 4,
-              pb: 3,
+              pb: 2,
               display: "flex",
               flexDirection: { xs: "column", md: "row" },
               alignItems: "center",
