@@ -116,17 +116,25 @@ export default function Footer() {
                     href="#contact"
                     variant="contained"
                     sx={{
-                      width: { xs: "100%", sm: "auto" },
-                      height: 48,
-                      borderRadius: "999px",
+                      width: { xs: "100%", sm: "fit-content" },
+                      maxWidth: { sm: 360 },
+                      minWidth: { sm: 240 },
+                      height: 50,
+                      borderRadius: 12,
                       textTransform: "none",
                       fontWeight: 600,
-                      backgroundColor: "#1e3a82",
-                      boxShadow: "0 10px 30px rgba(30, 58, 138, 0.4)",
-                      transition: "transform 0.25s ease, background 0.25s ease",
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                      background:
+                        "linear-gradient(180deg, rgba(46, 75, 145, 0.95), rgba(28, 54, 110, 0.95))",
+                      boxShadow: "0 10px 22px rgba(7, 16, 36, 0.45)",
+                      transition:
+                        "transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease",
                       "&:hover": {
-                        backgroundColor: "#2d4fa9",
-                        transform: "translateY(-2px)",
+                        background:
+                          "linear-gradient(180deg, rgba(58, 92, 170, 0.98), rgba(36, 66, 130, 0.98))",
+                        borderColor: "rgba(255, 255, 255, 0.22)",
+                        boxShadow: "0 14px 28px rgba(15, 30, 60, 0.45)",
+                        transform: "translateY(-1px)",
                       },
                     }}
                   >
@@ -136,22 +144,38 @@ export default function Footer() {
                     href="#portfolio"
                     underline="none"
                     sx={{
-                      color: "rgba(255, 255, 255, 0.92)",
-                      fontWeight: 600,
+                      color: "rgba(236, 240, 255, 0.9)",
+                      fontWeight: 500,
                       display: "inline-flex",
                       alignItems: "center",
                       gap: 0.5,
                       justifyContent: { xs: "center", sm: "flex-start" },
                       transition: "color 0.2s ease",
-                      borderBottom: "1px solid transparent",
                       "&:hover": {
                         color: "#ffffff",
-                        borderBottom: "1px solid rgba(255, 255, 255, 0.5)",
+                      },
+                      "&:hover .cta-arrow": {
+                        transform: "translateX(4px)",
+                      },
+                      "& .cta-underline": {
+                        width: 0,
+                        height: "1px",
+                        background: "rgba(255, 255, 255, 0.5)",
+                        transition: "width 0.2s ease",
+                        display: "block",
+                      },
+                      "&:hover .cta-underline": {
+                        width: "100%",
                       },
                     }}
                   >
-                    <span>See work</span>
-                    <span>→</span>
+                    <Box component="span" sx={{ position: "relative", display: "inline-block" }}>
+                      <span>See work</span>
+                      <span className="cta-underline" />
+                    </Box>
+                    <Box component="span" className="cta-arrow" sx={{ transition: "transform 0.2s ease" }}>
+                      →
+                    </Box>
                   </Link>
                 </Stack>
               </Stack>
@@ -272,39 +296,31 @@ export default function Footer() {
               alignItems: "center",
               justifyContent: "space-between",
               gap: 2,
-              fontSize: "0.82rem",
-              color: "rgba(148, 163, 184, 0.65)",
+              fontSize: "0.78rem",
+              color: "rgba(148, 163, 184, 0.75)",
             }}
           >
-            <Stack spacing={0.5}>
+            <Stack
+              direction={{ xs: "column", sm: "row" }}
+              spacing={{ xs: 0.4, sm: 1 }}
+              alignItems={{ xs: "flex-start", sm: "center" }}
+            >
               <Typography variant="caption" sx={{ color: "inherit" }}>
                 © 2025 3Craft Digital. All rights reserved.
               </Typography>
-              <Typography variant="caption" sx={{ color: "inherit" }}>
+              <Typography
+                variant="caption"
+                sx={{ color: "rgba(148, 163, 184, 0.82)", display: { xs: "none", sm: "inline" } }}
+              >
+                •
+              </Typography>
+              <Typography
+                variant="caption"
+                sx={{ color: "rgba(197, 206, 224, 0.85)" }}
+              >
                 From Karachi for global brands.
               </Typography>
             </Stack>
-            <Link
-              href="#hero"
-              underline="none"
-              sx={{
-                border: "1px solid rgba(255, 255, 255, 0.22)",
-                borderRadius: 999,
-                px: 3,
-                py: 0.5,
-                fontWeight: 600,
-                color: "rgba(255, 255, 255, 0.85)",
-                transition: "color 0.2s ease, border-color 0.2s ease, transform 0.2s ease",
-                "&:hover": {
-                  color: "#ffffff",
-                  borderColor: "rgba(255, 255, 255, 0.4)",
-                  transform: "translateY(-2px)",
-                },
-                alignSelf: { xs: "flex-end", md: "auto" },
-              }}
-            >
-              Back to top ↑
-            </Link>
           </Box>
         </Box>
       </Container>
