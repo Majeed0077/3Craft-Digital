@@ -94,7 +94,7 @@ export default function Footer() {
                     fontSize: { xs: "0.95rem", md: "1rem" },
                   }}
                 >
-                  3Craft Digital builds brand systems and digital experiences — built for clarity, precision,
+                  3Craft Digital builds brand systems and digital experiences, built for clarity, precision,
                   and long-term value.
                 </Typography>
                 <Stack direction="row" spacing={1} alignItems="center">

@@ -98,6 +98,12 @@ export default function PortfolioSection() {
     setModalState({ ...modalState, imageIndex: modalState.imageIndex + 1 });
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Escape") closeModal();
+    if (event.key === "ArrowLeft") goPrev();
+    if (event.key === "ArrowRight") goNext();
+  };
+
   return (
     <section id="portfolio">
       <div className="container">
@@ -133,7 +139,14 @@ export default function PortfolioSection() {
         </div>
 
         {activeItem && activeImage && (
-          <div className="portfolio-modal" role="dialog" aria-modal="true" onClick={closeModal}>
+          <div
+            className="portfolio-modal"
+            role="dialog"
+            aria-modal="true"
+            tabIndex={-1}
+            onKeyDown={handleKeyDown}
+            onClick={closeModal}
+          >
             <div className="portfolio-modal-content" onClick={(event) => event.stopPropagation()}>
               <button
                 type="button"
@@ -144,28 +157,39 @@ export default function PortfolioSection() {
                 ×
               </button>
               <div className="portfolio-modal-body">
-                <button
-                  type="button"
-                  className="portfolio-modal-nav"
-                  onClick={goPrev}
-                  disabled={!canPrev}
-                  aria-label="Previous image"
-                >
-                  ‹
-                </button>
-                <img src={activeImage} alt={`${activeItem.label} preview ${activeIndex + 1}`} loading="lazy" />
-                <button
-                  type="button"
-                  className="portfolio-modal-nav"
-                  onClick={goNext}
-                  disabled={!canNext}
-                  aria-label="Next image"
-                >
-                  ›
-                </button>
-              </div>
-              <div className="portfolio-modal-counter">
-                {activeIndex + 1} / {activeItem.gallery.length}
+                <div className="portfolio-modal-image-frame">
+                  <div className="portfolio-modal-hotspot portfolio-modal-hotspot-left">
+                    <button
+                      type="button"
+                      className="portfolio-modal-arrow"
+                      onClick={goPrev}
+                      disabled={!canPrev}
+                      aria-label="Previous"
+                    >
+                      ‹
+                    </button>
+                  </div>
+                  <div className="portfolio-modal-hotspot portfolio-modal-hotspot-right">
+                    <button
+                      type="button"
+                      className="portfolio-modal-arrow"
+                      onClick={goNext}
+                      disabled={!canNext}
+                      aria-label="Next"
+                    >
+                      ›
+                    </button>
+                  </div>
+                  <img
+                    src={activeImage}
+                    alt={`${activeItem.label} preview ${activeIndex + 1}`}
+                    loading="lazy"
+                  />
+                  <div className="portfolio-modal-counter-pill">
+                    {String(activeIndex + 1).padStart(2, "0")} —{" "}
+                    {String(activeItem.gallery.length).padStart(2, "0")}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
