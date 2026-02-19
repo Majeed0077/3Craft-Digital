@@ -1141,6 +1141,8 @@ nav a:hover::after {
   cursor: zoom-in;
   position: relative;
   z-index: 1;
+  overflow: hidden;
+  touch-action: manipulation;
 }
 .portfolio-modal-image-toggle img {
   width: 100%;
@@ -1153,12 +1155,21 @@ nav a:hover::after {
   background: #f6f7fa;
   transition: transform 0.28s ease;
   transform-origin: center center;
+  transform: translate3d(0, 0, 0) scale(1);
+  will-change: transform;
 }
 .portfolio-modal-image-toggle.is-zoomed {
-  cursor: zoom-out;
+  cursor: grab;
+  touch-action: none;
+}
+.portfolio-modal-image-toggle.is-zoomed.is-dragging {
+  cursor: grabbing;
 }
 .portfolio-modal-image-toggle.is-zoomed img {
-  transform: scale(1.9);
+  transform: translate3d(var(--portfolio-pan-x, 0px), var(--portfolio-pan-y, 0px), 0) scale(1.9);
+}
+.portfolio-modal-image-toggle.is-zoomed.is-dragging img {
+  transition: none;
 }
 .portfolio-modal-image-frame::after {
   content: "";
