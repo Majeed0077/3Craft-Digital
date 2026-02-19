@@ -42,10 +42,24 @@ export default function Footer() {
       component="footer"
       sx={{
         position: "relative",
-        background: "linear-gradient(180deg, rgba(3, 7, 19, 0.96), rgba(3, 7, 19, 1))",
+        background:
+          "linear-gradient(180deg, rgba(2, 6, 23, 0.15), rgba(2, 6, 23, 0.52) 45%, rgba(2, 6, 23, 0.8))",
         color: "rgba(255, 255, 255, 0.9)",
-        borderTop: "1px solid rgba(255, 255, 255, 0.06)",
+        borderTop: "1px solid rgba(148, 163, 184, 0.14)",
         py: { xs: 6, md: 8 },
+        overflow: "hidden",
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          inset: "0 auto auto 12%",
+          width: 420,
+          height: 420,
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle, rgba(37, 99, 235, 0.22) 0%, rgba(37, 99, 235, 0.08) 35%, transparent 70%)",
+          filter: "blur(18px)",
+          pointerEvents: "none",
+        },
       }}
     >
       <Container maxWidth="lg" sx={{ px: { xs: 2, md: 3 } }}>
@@ -54,12 +68,19 @@ export default function Footer() {
             display: "flex",
             flexDirection: "column",
             gap: { xs: 3, md: 5 },
+            background:
+              "linear-gradient(160deg, rgba(15, 23, 42, 0.72), rgba(2, 6, 23, 0.84))",
+            border: "1px solid rgba(148, 163, 184, 0.2)",
+            borderRadius: "22px",
+            boxShadow: "0 28px 70px rgba(2, 6, 23, 0.45)",
+            backdropFilter: "blur(14px)",
+            p: { xs: 2.4, md: 4 },
           }}
         >
           <Box
             sx={{
               display: "grid",
-              gridTemplateColumns: { xs: "1fr", md: "1.1fr 1fr" },
+              gridTemplateColumns: { xs: "1fr", md: "1.15fr 0.85fr" },
               gap: { xs: 3, md: 5 },
             }}
           >
@@ -69,7 +90,7 @@ export default function Footer() {
                   variant="overline"
                   sx={{
                     letterSpacing: "0.32em",
-                    color: "rgba(148, 163, 184, 0.7)",
+                    color: "rgba(148, 163, 184, 0.85)",
                   }}
                 >
                   LET’S WORK TOGETHER
@@ -89,9 +110,10 @@ export default function Footer() {
                 <Typography
                   variant="body1"
                   sx={{
-                    color: "rgba(226, 232, 240, 0.85)",
+                    color: "rgba(226, 232, 240, 0.9)",
                     lineHeight: 1.6,
                     fontSize: { xs: "0.95rem", md: "1rem" },
+                    maxWidth: 620,
                   }}
                 >
                   3Craft Digital builds brand systems and digital experiences, built for clarity, precision,
@@ -120,20 +142,20 @@ export default function Footer() {
                       maxWidth: { sm: 360 },
                       minWidth: { sm: 240 },
                       height: 50,
-                      borderRadius: 12,
+                      borderRadius: 999,
                       textTransform: "none",
                       fontWeight: 600,
-                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                      border: "1px solid rgba(147, 197, 253, 0.34)",
                       background:
-                        "linear-gradient(180deg, rgba(46, 75, 145, 0.95), rgba(28, 54, 110, 0.95))",
-                      boxShadow: "0 10px 22px rgba(7, 16, 36, 0.45)",
+                        "linear-gradient(180deg, rgba(37, 99, 235, 0.95), rgba(29, 78, 216, 0.94))",
+                      boxShadow: "0 14px 30px rgba(30, 64, 175, 0.38)",
                       transition:
                         "transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease",
                       "&:hover": {
                         background:
-                          "linear-gradient(180deg, rgba(58, 92, 170, 0.98), rgba(36, 66, 130, 0.98))",
-                        borderColor: "rgba(255, 255, 255, 0.22)",
-                        boxShadow: "0 14px 28px rgba(15, 30, 60, 0.45)",
+                          "linear-gradient(180deg, rgba(59, 130, 246, 0.98), rgba(37, 99, 235, 0.98))",
+                        borderColor: "rgba(191, 219, 254, 0.62)",
+                        boxShadow: "0 18px 32px rgba(37, 99, 235, 0.36)",
                         transform: "translateY(-1px)",
                       },
                     }}
@@ -180,7 +202,12 @@ export default function Footer() {
                 </Stack>
               </Stack>
             </Box>
-            <Box sx={{ alignSelf: { md: "stretch" } }}>
+            <Box
+              sx={{
+                alignSelf: { md: "stretch" },
+                mt: { xs: 0, md: 1 },
+              }}
+            >
               <Box
                 sx={{
                   display: "grid",
@@ -189,16 +216,24 @@ export default function Footer() {
                     md: "repeat(2, minmax(0, 1fr))",
                   },
                   gap: { xs: 2.5, md: 3 },
+                  alignItems: "start",
                   "@media (max-width: 360px)": {
                     gridTemplateColumns: "1fr",
                   },
                 }}
               >
-                <Box>
+                <Box
+                  sx={{
+                    p: 2,
+                    borderRadius: 3,
+                    border: "1px solid rgba(148, 163, 184, 0.18)",
+                    background: "rgba(15, 23, 42, 0.42)",
+                  }}
+                >
                   <Stack spacing={1}>
                     <Typography
                       variant="overline"
-                      sx={{ letterSpacing: "0.35em", color: "rgba(148, 163, 184, 0.75)" }}
+                      sx={{ letterSpacing: "0.35em", color: "rgba(148, 163, 184, 0.9)" }}
                     >
                       Explore
                     </Typography>
@@ -212,7 +247,7 @@ export default function Footer() {
                             display: "inline-flex",
                             alignItems: "center",
                             gap: 0.75,
-                            color: "rgba(226, 232, 240, 0.85)",
+                            color: "rgba(226, 232, 240, 0.92)",
                             fontWeight: 500,
                             transition: "color 0.2s ease, transform 0.2s ease",
                             "&:hover": {
@@ -241,11 +276,18 @@ export default function Footer() {
                     </Stack>
                   </Stack>
                 </Box>
-                <Box>
+                <Box
+                  sx={{
+                    p: 2,
+                    borderRadius: 3,
+                    border: "1px solid rgba(148, 163, 184, 0.18)",
+                    background: "rgba(15, 23, 42, 0.42)",
+                  }}
+                >
                   <Stack spacing={1}>
                     <Typography
                       variant="overline"
-                      sx={{ letterSpacing: "0.35em", color: "rgba(148, 163, 184, 0.75)" }}
+                      sx={{ letterSpacing: "0.35em", color: "rgba(148, 163, 184, 0.9)" }}
                     >
                       Connect
                     </Typography>
@@ -261,7 +303,7 @@ export default function Footer() {
                             display: "inline-flex",
                             alignItems: "center",
                             gap: 0.75,
-                            color: "rgba(226, 232, 240, 0.85)",
+                            color: "rgba(226, 232, 240, 0.92)",
                             fontWeight: 500,
                             transition: "color 0.2s ease, transform 0.2s ease",
                             "&:hover": {
@@ -288,9 +330,9 @@ export default function Footer() {
           </Box>
           <Box
             sx={{
-              borderTop: "1px solid rgba(255, 255, 255, 0.06)",
-              pt: 4,
-              pb: 2,
+              borderTop: "1px solid rgba(148, 163, 184, 0.16)",
+              pt: 3,
+              pb: 1,
               display: "flex",
               flexDirection: { xs: "column", md: "row" },
               alignItems: "center",
