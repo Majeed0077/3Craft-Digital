@@ -47,8 +47,8 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     year: "2023",
     title: "Conversion-focused landing page layout",
     sub: "Messaging, UX flow",
-    image: "https://placehold.co/800x560/0b1220/ffffff?text=Landing+Page",
-    gallery: ["https://placehold.co/800x560/0b1220/ffffff?text=Landing+Page"],
+    image: "/landing%20page.jpg.jpeg",
+    gallery: ["/landing%20page.jpg.jpeg"],
   },
   {
     label: "Campaign Assets",
@@ -63,8 +63,13 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     year: "2023",
     title: "Minimal product label & box design",
     sub: "Print, dielines, mockups",
-    image: "https://placehold.co/800x560/0b1220/ffffff?text=Packaging",
-    gallery: ["https://placehold.co/800x560/0b1220/ffffff?text=Packaging"],
+    image: "/packaging%20(1).jpeg",
+    gallery: [
+      "/packaging%20(1).jpeg",
+      "/packaging%20(2).jpeg",
+      "/packaging%20(3).jpeg",
+      "/packaging%20(4).jpeg",
+    ],
   },
 ];
 
@@ -72,12 +77,17 @@ export default function PortfolioSection() {
   const [modalState, setModalState] = useState<
     { itemIndex: number; imageIndex: number } | null
   >(null);
+  const [isModalImageZoomed, setIsModalImageZoomed] = useState(false);
 
   const handleImageClick = (itemIndex: number) => {
     setModalState({ itemIndex, imageIndex: 0 });
+    setIsModalImageZoomed(false);
   };
 
-  const closeModal = () => setModalState(null);
+  const closeModal = () => {
+    setModalState(null);
+    setIsModalImageZoomed(false);
+  };
 
   const activeItem =
     modalState !== null ? PORTFOLIO_ITEMS[modalState.itemIndex] : null;
@@ -91,17 +101,22 @@ export default function PortfolioSection() {
   const goPrev = () => {
     if (!modalState || !canPrev) return;
     setModalState({ ...modalState, imageIndex: modalState.imageIndex - 1 });
+    setIsModalImageZoomed(false);
   };
 
   const goNext = () => {
     if (!modalState || !canNext) return;
     setModalState({ ...modalState, imageIndex: modalState.imageIndex + 1 });
+    setIsModalImageZoomed(false);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Escape") closeModal();
     if (event.key === "ArrowLeft") goPrev();
     if (event.key === "ArrowRight") goNext();
+    if (event.key.toLowerCase() === "z") {
+      setIsModalImageZoomed((prev) => !prev);
+    }
   };
 
   return (
@@ -180,11 +195,19 @@ export default function PortfolioSection() {
                       ›
                     </button>
                   </div>
-                  <img
-                    src={activeImage}
-                    alt={`${activeItem.label} preview ${activeIndex + 1}`}
-                    loading="lazy"
-                  />
+                  <button
+                    type="button"
+                    className={`portfolio-modal-image-toggle${isModalImageZoomed ? " is-zoomed" : ""}`}
+                    onClick={() => setIsModalImageZoomed((prev) => !prev)}
+                    aria-label={isModalImageZoomed ? "Zoom out image" : "Zoom in image"}
+                    aria-pressed={isModalImageZoomed}
+                  >
+                    <img
+                      src={activeImage}
+                      alt={`${activeItem.label} preview ${activeIndex + 1}`}
+                      loading="lazy"
+                    />
+                  </button>
                   <div className="portfolio-modal-counter-pill">
                     {String(activeIndex + 1).padStart(2, "0")} —{" "}
                     {String(activeItem.gallery.length).padStart(2, "0")}

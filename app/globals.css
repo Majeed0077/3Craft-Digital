@@ -1131,7 +1131,18 @@ nav a:hover::after {
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 40px 90px rgba(2, 6, 23, 0.55);
 }
-.portfolio-modal-image-frame img {
+.portfolio-modal-image-toggle {
+  width: 100%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border-radius: 14px;
+  cursor: zoom-in;
+  position: relative;
+  z-index: 1;
+}
+.portfolio-modal-image-toggle img {
   width: 100%;
   height: auto;
   max-height: calc(100vh - 220px);
@@ -1140,6 +1151,14 @@ nav a:hover::after {
   border-radius: 14px;
   animation: modalImageIn 0.22s ease-out both;
   background: #f6f7fa;
+  transition: transform 0.28s ease;
+  transform-origin: center center;
+}
+.portfolio-modal-image-toggle.is-zoomed {
+  cursor: zoom-out;
+}
+.portfolio-modal-image-toggle.is-zoomed img {
+  transform: scale(1.9);
 }
 .portfolio-modal-image-frame::after {
   content: "";
@@ -1155,6 +1174,8 @@ nav a:hover::after {
   left: 16px;
   bottom: 16px;
   transform: none;
+  z-index: 3;
+  pointer-events: none;
   padding: 8px 12px;
   border-radius: 999px;
   background: rgba(2, 6, 23, 0.55);
@@ -1228,11 +1249,9 @@ nav a:hover::after {
 @keyframes modalImageIn {
   0% {
     opacity: 0;
-    transform: translateY(12px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
