@@ -6,8 +6,11 @@ import { useRef, useState } from "react";
 
 type PortfolioItem = {
   label: string;
+  year: string;
   title: string;
   sub: string;
+  outcome?: string;
+  featured?: boolean;
   image: string;
   gallery: string[];
 };
@@ -15,8 +18,11 @@ type PortfolioItem = {
 const PORTFOLIO_ITEMS: PortfolioItem[] = [
   {
     label: "Brand Identity",
+    year: "2024",
     title: "Logo + system for a modern startup",
     sub: "Identity system, guidelines",
+    outcome: "+42% brand recall in audience testing",
+    featured: true,
     image: "/Portfolio.jpeg",
     gallery: [
       "/Portfolio.jpeg",
@@ -26,36 +32,37 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
   },
   {
     label: "CMS Website",
+    year: "2024",
     title: "Responsive CMS site for a service brand",
     sub: "UX, UI, development",
+    outcome: "3x faster content publishing workflow",
     image: "https://placehold.co/800x560/0b1220/ffffff?text=CMS+Website",
     gallery: ["https://placehold.co/800x560/0b1220/ffffff?text=CMS+Website"],
   },
   {
     label: "Visual Branding",
+    year: "2024",
     title: "Social media and stationery kit",
     sub: "Brand collateral, assets",
+    outcome: "Unified visual system across 12 channels",
     image: "/VisualBranding.jpeg",
     gallery: ["/VisualBranding.jpeg"],
   },
   {
     label: "Landing Page",
+    year: "2023",
     title: "Conversion-focused landing page layout",
     sub: "Messaging, UX flow",
+    outcome: "+31% lead-form completion rate",
     image: "/landing%20page.jpg.jpeg",
     gallery: ["/landing%20page.jpg.jpeg"],
   },
   {
-    label: "Campaign Assets",
-    title: "Ad and banner set for a launch",
-    sub: "Paid + organic formats",
-    image: "https://placehold.co/800x560/0b1220/ffffff?text=Campaign+Assets",
-    gallery: ["https://placehold.co/800x560/0b1220/ffffff?text=Campaign+Assets"],
-  },
-  {
     label: "Packaging",
+    year: "2023",
     title: "Minimal product label & box design",
     sub: "Print, dielines, mockups",
+    outcome: "Shelf-ready design with faster print approvals",
     image: "/packaging%20(1).jpeg",
     gallery: [
       "/packaging%20(1).jpeg",
@@ -214,7 +221,10 @@ export default function PortfolioSection() {
 
         <div className="portfolio-grid">
           {PORTFOLIO_ITEMS.map((item, index) => (
-            <div className="portfolio-item" key={`${item.label}-${item.year}`}>
+            <div
+              className={`portfolio-item${item.featured ? " is-featured" : ""}`}
+              key={`${item.label}-${item.year}`}
+            >
               <div className="portfolio-media">
                 <button
                   type="button"
@@ -230,6 +240,7 @@ export default function PortfolioSection() {
               </div>
               <strong className="portfolio-title">{item.title}</strong>
               <span className="portfolio-sub">{item.sub}</span>
+              {item.outcome && <span className="portfolio-outcome">{item.outcome}</span>}
             </div>
           ))}
         </div>
@@ -312,8 +323,8 @@ export default function PortfolioSection() {
         <div className="section-cta">
           <p>Like what you see? Let us scope a focused, premium build.</p>
           <div className="section-cta-actions">
-            <a href="#contact" className="btn btn-primary">
-              Start a Project
+            <a href="#contact" className="btn btn-outline">
+              Discuss Your Project
             </a>
           </div>
         </div>

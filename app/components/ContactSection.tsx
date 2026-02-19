@@ -155,6 +155,11 @@ export default function ContactSection() {
               <strong>Mon - Sat</strong>
             </div>
           </div>
+          <ul className="contact-trust-list" aria-label="Client assurances">
+            <li>NDA-friendly process for sensitive projects</li>
+            <li>No spam, no pressure, and clear pricing upfront</li>
+            <li>Direct communication with the designer handling your work</li>
+          </ul>
         </div>
 
         <form className="contact-form" onSubmit={handleSubmit} noValidate>
