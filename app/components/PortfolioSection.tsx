@@ -231,6 +231,7 @@ export default function PortfolioSection() {
                   className="portfolio-image-btn"
                   onClick={() => handleImageClick(index)}
                 >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={item.image} alt={`${item.label} preview`} loading="lazy" />
                 </button>
               </div>
@@ -304,6 +305,7 @@ export default function PortfolioSection() {
                       } as React.CSSProperties
                     }
                   >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={activeImage}
                       alt={`${activeItem.label} preview ${activeIndex + 1}`}
