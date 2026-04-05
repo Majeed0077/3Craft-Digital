@@ -1,6 +1,7 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import {
   Box,
@@ -26,11 +27,25 @@ const NAV_ITEMS = [
 ];
 
 export default function Header() {
+  const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [activeHref, setActiveHref] = useState<string>(NAV_ITEMS[0].href);
   const lastHrefRef = useRef<string>(NAV_ITEMS[0].href);
 
+  const getNavDestination = (href: string) => {
+    if (pathname === "/") return href;
+    return href === "#hero" ? "/" : `/${href}`;
+  };
+
   const handleNavClick = (href: string) => (event: React.MouseEvent) => {
+    if (pathname !== "/") {
+      event.preventDefault();
+      router.push(getNavDestination(href));
+      setOpen(false);
+      return;
+    }
+
     event.preventDefault();
     const target = document.querySelector<HTMLElement>(href);
     if (target) {
@@ -38,9 +53,16 @@ export default function Header() {
       window.history.pushState(null, "", href);
       setActiveHref(href);
     }
+    setOpen(false);
   };
 
   useEffect(() => {
+    if (pathname !== "/") {
+      setActiveHref("#hero");
+      lastHrefRef.current = "#hero";
+      return;
+    }
+
     const sections = NAV_ITEMS.map((item) => {
       const el = document.querySelector<HTMLElement>(item.href);
       return { href: item.href, el };
@@ -100,7 +122,7 @@ export default function Header() {
         window.cancelAnimationFrame(rafId);
       }
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <Box
@@ -125,7 +147,7 @@ export default function Header() {
           sx={{ minHeight: 90, gap: 3 }}
         >
           <Link
-            href="#hero"
+            href={pathname === "/" ? "#hero" : "/"}
             underline="none"
             color="inherit"
             onClick={handleNavClick("#hero")}
@@ -185,7 +207,7 @@ export default function Header() {
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
-                href={item.href}
+                href={getNavDestination(item.href)}
                 underline="none"
                 onClick={handleNavClick(item.href)}
                 sx={{
@@ -195,20 +217,21 @@ export default function Header() {
                   position: "relative",
                   paddingBottom: "6px",
                   "&:hover": { color: "#fff" },
-                  ...(activeHref === item.href && {
-                    color: "#fff",
-                    "&::after": {
-                      content: '""',
-                      position: "absolute",
-                      left: "10%",
-                      right: "10%",
-                      bottom: 0,
-                      height: 2,
-                      borderRadius: 999,
-                      background:
-                        "linear-gradient(90deg, rgba(59,130,246,0), rgba(59,130,246,0.95), rgba(59,130,246,0))",
-                    },
-                  }),
+                  ...(pathname === "/" &&
+                    activeHref === item.href && {
+                      color: "#fff",
+                      "&::after": {
+                        content: '""',
+                        position: "absolute",
+                        left: "10%",
+                        right: "10%",
+                        bottom: 0,
+                        height: 2,
+                        borderRadius: 999,
+                        background:
+                          "linear-gradient(90deg, rgba(59,130,246,0), rgba(59,130,246,0.95), rgba(59,130,246,0))",
+                      },
+                    }),
                 }}
               >
                 {item.label}
@@ -218,8 +241,9 @@ export default function Header() {
 
           <Stack direction="row" spacing={1} alignItems="center">
             <Button
-              href="#contact"
+              href={getNavDestination("#contact")}
               variant="contained"
+              onClick={handleNavClick("#contact")}
               sx={{
                 display: { xs: "none", md: "inline-flex" },
                 textTransform: "none",
@@ -314,11 +338,8 @@ export default function Header() {
                 <ListItemButton
                   key={item.href}
                   component="a"
-                  href={item.href}
-                  onClick={(event) => {
-                    handleNavClick(item.href)(event);
-                    setOpen(false);
-                  }}
+                  href={getNavDestination(item.href)}
+                  onClick={handleNavClick(item.href)}
                   sx={{
                     px: 2.5,
                     py: 1.4,
@@ -331,11 +352,12 @@ export default function Header() {
                         ? "none"
                         : "1px solid rgba(148, 163, 184, 0.08)",
                     "&:hover": { background: "rgba(59, 130, 246, 0.12)" },
-                    ...(activeHref === item.href && {
-                      background:
-                        "linear-gradient(90deg, rgba(59,130,246,0.28), rgba(59,130,246,0.05))",
-                      color: "#fff",
-                    }),
+                    ...(pathname === "/" &&
+                      activeHref === item.href && {
+                        background:
+                          "linear-gradient(90deg, rgba(59,130,246,0.28), rgba(59,130,246,0.05))",
+                        color: "#fff",
+                      }),
                   }}
                 >
                   <ListItemText primary={item.label} />
@@ -343,9 +365,9 @@ export default function Header() {
               ))}
             </List>
             <Button
-              href="#contact"
+              href={getNavDestination("#contact")}
               variant="contained"
-              onClick={() => setOpen(false)}
+              onClick={handleNavClick("#contact")}
               sx={{
                 textTransform: "none",
                 fontWeight: 600,
