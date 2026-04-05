@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     template: "%s | 3Craft Digital",
   },
   description:
-    "3Craft Digital is a Karachi-based creative studio serving Pakistan and global brands with branding, websites, Shopify, WordPress, and social media design.",
+    "3Craft Digital is a creative studio serving Pakistan and global brands with branding, websites, Shopify, WordPress, and social media design.",
   keywords: [
     "3Craft Digital",
-    "branding agency Karachi",
+    "branding agency Pakistan",
     "web design agency Pakistan",
     "Shopify design agency",
     "WordPress website design",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "3Craft Digital | Branding, Websites, Shopify & WordPress Design",
     description:
-      "Karachi-based creative studio for branding, websites, Shopify, WordPress, and social media design.",
+      "Creative studio for branding, websites, Shopify, WordPress, and social media design.",
     images: ["/Image/3craft digital.png"],
   },
   robots: {

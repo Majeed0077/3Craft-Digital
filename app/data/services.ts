@@ -20,9 +20,9 @@ export const SERVICES: Service[] = [
     name: "Branding & Brand Identity Design",
     shortName: "Branding",
     kicker: "Brand Strategy",
-    metaTitle: "Branding Agency in Karachi for Pakistan and Global Brands",
+    metaTitle: "Branding Agency for Pakistan and Global Brands",
     metaDescription:
-      "3Craft Digital creates logos, visual systems, brand kits, and identity design for businesses in Karachi, across Pakistan, and internationally.",
+      "3Craft Digital creates logos, visual systems, brand kits, and identity design for businesses across Pakistan and internationally.",
     heroTitle: "Branding that gives your business a clear, memorable identity.",
     heroDescription:
       "We build brand identity systems that help businesses look sharper, communicate consistently, and feel credible across digital and print touchpoints.",
@@ -54,7 +54,7 @@ export const SERVICES: Service[] = [
       {
         question: "Can you support both Pakistan-based and international brands?",
         answer:
-          "Yes. We work with local businesses in Karachi and Pakistan, and we also structure branding work for global-first digital businesses.",
+          "Yes. We work with businesses across Pakistan and also structure branding work for global-first digital businesses.",
       },
     ],
   },

@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 // import TeamSection from "./components/TeamSection";
+import LocalSeoSection from "./components/LocalSeoSection";
 import ServicesSection from "./components/ServicesSection";
 import PortfolioSection from "./components/PortfolioSection";
 import WhySection from "./components/WhySection";
@@ -20,7 +21,6 @@ const organizationJsonLd = {
   email: "info@3craftdigital.com",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Karachi",
     addressCountry: "PK",
   },
   areaServed: [
@@ -79,6 +79,7 @@ export default function HomePage() {
         {/* <TeamSection /> */}
         <ServicesSection />
         <PortfolioSection />
+        <LocalSeoSection />
         <WhySection />
         <ProcessSection />
         <TestimonialsSection />

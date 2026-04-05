@@ -6,8 +6,12 @@ export default function WhySection() {
       <div className="container">
         <div className="section-header">
           <div className="section-kicker">Why us</div>
-          <h2>Why brands work with 3Craft Digital</h2>
-          <p>No fluff. No confusing process. Just sharp design and clear communication.</p>
+          <h2>Why businesses choose 3Craft Digital for branding and website design</h2>
+          <p>
+            No fluff, no confusing process, and no vague design direction. We
+            focus on sharp execution, clear communication, and work that helps
+            brands look stronger in competitive markets.
+          </p>
         </div>
 
         <div className="why-grid">

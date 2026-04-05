@@ -76,13 +76,13 @@ if (legacy.addListener) {
       <div className="container hero-inner">
         {/* LEFT TEXT BLOCK */}
         <div>
-          <div className="hero-kicker">Performance-Driven Creative Studio</div>
-          <h1>Design that demands attention & drives action.</h1>
+          <div className="hero-kicker">Creative Studio for Pakistan and Global Clients</div>
+          <h1>Branding, website design, Shopify, WordPress, and social media visuals that drive action.</h1>
           <p className="hero-subtext">
-            3Craft Digital builds modern brand identities & clean,
-            conversion-focused CMS websites. A compact 3-specialist studio
-            combining brand design, visual systems, & technical development
-            into one sharp digital experience.
+            3Craft Digital helps businesses across Pakistan and internationally
+            with modern branding, conversion-focused website design, Shopify
+            storefront direction, WordPress page systems, and social media
+            design built to look premium and perform clearly.
           </p>
           <div className="hero-buttons">
             <a href="#contact" className="btn btn-primary">
@@ -95,7 +95,7 @@ if (legacy.addListener) {
 
           <div className="hero-meta">
             <span className="dot" />
-            <span>Average response time: under 15 minutes</span>
+            <span>Average response time: under 15 minutes for new project inquiries</span>
           </div>
         </div>
 

@@ -138,7 +138,7 @@ export default function Footer() {
                     }}
                   />
                   <Typography variant="body2" sx={{ color: "rgba(226, 232, 240, 0.75)" }}>
-                    NASTP Karachi
+                    Serving Pakistan and global brands
                   </Typography>
                 </Stack>
                 <Stack direction="column" spacing={2} sx={{ width: "100%" }}>
@@ -413,7 +413,7 @@ export default function Footer() {
                 variant="caption"
                 sx={{ color: "rgba(197, 206, 224, 0.85)" }}
               >
-                From Karachi for global brands.
+                Built for clients in Pakistan and beyond.
               </Typography>
             </Stack>
           </Box>

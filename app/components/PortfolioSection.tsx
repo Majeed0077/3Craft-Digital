@@ -1,77 +1,8 @@
-﻿'use client';
+'use client';
 
+import Link from "next/link";
 import { useRef, useState } from "react";
-
-// components/PortfolioSection.tsx
-
-type PortfolioItem = {
-  label: string;
-  year: string;
-  title: string;
-  sub: string;
-  outcome?: string;
-  featured?: boolean;
-  image: string;
-  gallery: string[];
-};
-
-const PORTFOLIO_ITEMS: PortfolioItem[] = [
-  {
-    label: "Brand Identity",
-    year: "2024",
-    title: "Logo + system for a modern startup",
-    sub: "Identity system, guidelines",
-    outcome: "+42% brand recall in audience testing",
-    featured: true,
-    image: "/Portfolio.jpeg",
-    gallery: [
-      "/Portfolio.jpeg",
-      "https://placehold.co/800x560/001f4a/ffffff?text=Mockup+2",
-      "https://placehold.co/800x560/0d3b8f/ffffff?text=Mockup+3",
-    ],
-  },
-  {
-    label: "CMS Website",
-    year: "2024",
-    title: "Responsive CMS site for a service brand",
-    sub: "UX, UI, development",
-    outcome: "3x faster content publishing workflow",
-    image: "https://placehold.co/800x560/0b1220/ffffff?text=CMS+Website",
-    gallery: ["https://placehold.co/800x560/0b1220/ffffff?text=CMS+Website"],
-  },
-  {
-    label: "Visual Branding",
-    year: "2024",
-    title: "Social media and stationery kit",
-    sub: "Brand collateral, assets",
-    outcome: "Unified visual system across 12 channels",
-    image: "/VisualBranding.jpeg",
-    gallery: ["/VisualBranding.jpeg"],
-  },
-  {
-    label: "Landing Page",
-    year: "2023",
-    title: "Conversion-focused landing page layout",
-    sub: "Messaging, UX flow",
-    outcome: "+31% lead-form completion rate",
-    image: "/landing%20page.jpg.jpeg",
-    gallery: ["/landing%20page.jpg.jpeg"],
-  },
-  {
-    label: "Packaging",
-    year: "2023",
-    title: "Minimal product label & box design",
-    sub: "Print, dielines, mockups",
-    outcome: "Shelf-ready design with faster print approvals",
-    image: "/packaging%20(1).jpeg",
-    gallery: [
-      "/packaging%20(1).jpeg",
-      "/packaging%20(2).jpeg",
-      "/packaging%20(3).jpeg",
-      "/packaging%20(4).jpeg",
-    ],
-  },
-];
+import { PORTFOLIO_CASE_STUDIES } from "../data/portfolio";
 
 export default function PortfolioSection() {
   const MODAL_ZOOM_SCALE = 1.9;
@@ -112,7 +43,7 @@ export default function PortfolioSection() {
   };
 
   const activeItem =
-    modalState !== null ? PORTFOLIO_ITEMS[modalState.itemIndex] : null;
+    modalState !== null ? PORTFOLIO_CASE_STUDIES[modalState.itemIndex] : null;
   const activeIndex = modalState?.imageIndex ?? 0;
   const activeImage = activeItem ? activeItem.gallery[activeIndex] : null;
 
@@ -212,18 +143,18 @@ export default function PortfolioSection() {
       <div className="container">
         <div className="section-header">
           <div className="section-kicker">Portfolio</div>
-          <h2>Selected work previews</h2>
+          <h2>Case studies across branding, websites, and visual systems</h2>
           <p>
-            A glimpse into the brand identities, visuals, and web directions
-            we`ve crafted.
+            Browse selected 3Craft Digital projects covering brand identity,
+            website design, landing pages, social media systems, and packaging.
           </p>
         </div>
 
         <div className="portfolio-grid">
-          {PORTFOLIO_ITEMS.map((item, index) => (
-            <div
-              className={`portfolio-item${item.featured ? " is-featured" : ""}`}
-              key={`${item.label}-${item.year}`}
+          {PORTFOLIO_CASE_STUDIES.map((item, index) => (
+            <article
+              className={`portfolio-item${index === 0 ? " is-featured" : ""}`}
+              key={item.slug}
             >
               <div className="portfolio-media">
                 <button
@@ -232,17 +163,22 @@ export default function PortfolioSection() {
                   onClick={() => handleImageClick(index)}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={item.image} alt={`${item.label} preview`} loading="lazy" />
+                  <img src={item.image} alt={item.title} loading="lazy" />
                 </button>
               </div>
               <div className="portfolio-meta">
-                <span className="pill">{item.label}</span>
+                <span className="pill">{item.category}</span>
                 <span className="portfolio-year">{item.year}</span>
               </div>
               <strong className="portfolio-title">{item.title}</strong>
-              <span className="portfolio-sub">{item.sub}</span>
-              {item.outcome && <span className="portfolio-outcome">{item.outcome}</span>}
-            </div>
+              <span className="portfolio-sub">{item.summary}</span>
+              <span className="portfolio-outcome">{item.outcome}</span>
+              <div className="service-card-actions">
+                <Link href={`/work/${item.slug}`} className="btn btn-outline">
+                  View Case Study
+                </Link>
+              </div>
+            </article>
           ))}
         </div>
 
@@ -308,12 +244,12 @@ export default function PortfolioSection() {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={activeImage}
-                      alt={`${activeItem.label} preview ${activeIndex + 1}`}
+                      alt={`${activeItem.title} visual ${activeIndex + 1}`}
                       loading="lazy"
                     />
                   </button>
                   <div className="portfolio-modal-counter-pill">
-                    {String(activeIndex + 1).padStart(2, "0")} —{" "}
+                    {String(activeIndex + 1).padStart(2, "0")} -{" "}
                     {String(activeItem.gallery.length).padStart(2, "0")}
                   </div>
                 </div>
@@ -323,8 +259,11 @@ export default function PortfolioSection() {
         )}
 
         <div className="section-cta">
-          <p>Like what you see? Let us scope a focused, premium build.</p>
+          <p>Need a sharper brand or website? Review the full case studies or scope your own project.</p>
           <div className="section-cta-actions">
+            <Link href="/work" className="btn btn-outline">
+              Explore All Case Studies
+            </Link>
             <a href="#contact" className="btn btn-outline">
               Discuss Your Project
             </a>
