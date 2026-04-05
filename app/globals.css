@@ -905,6 +905,19 @@ nav a:hover::after {
   line-height: 1.65;
 }
 
+.service-card-title {
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.service-card-actions {
+  margin-top: auto;
+  padding-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 .service-card:hover {
   border-color: var(--blue);
   transform: translateY(-3px);
@@ -914,6 +927,103 @@ nav a:hover::after {
 .service-card:hover::before,
 .service-card:hover::after {
   opacity: 1;
+}
+
+.service-page-hero {
+  padding-top: 76px;
+  padding-bottom: 48px;
+}
+
+.service-page-header {
+  max-width: 820px;
+}
+
+.service-page-header h1 {
+  margin-bottom: 14px;
+}
+
+.service-page-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.service-page-copy h1,
+.service-page-copy p,
+.service-page-copy .section-kicker {
+  text-align: left;
+}
+
+.service-page-lead {
+  max-width: 720px;
+  color: rgba(226, 232, 240, 0.88);
+  font-size: 1.02rem;
+}
+
+.service-page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.service-page-panel,
+.service-detail-card {
+  background: linear-gradient(160deg, rgba(15, 23, 42, 0.78), rgba(2, 6, 23, 0.9));
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(14px);
+}
+
+.service-page-panel {
+  padding: 22px 20px;
+}
+
+.service-page-panel p {
+  color: rgba(226, 232, 240, 0.88);
+}
+
+.service-detail-sections {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.service-detail-card {
+  padding: 22px 20px;
+}
+
+.service-detail-card h2,
+.service-detail-card h3 {
+  text-align: left;
+}
+
+.service-detail-card p {
+  color: rgba(226, 232, 240, 0.84);
+}
+
+.service-detail-list {
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 10px;
+  color: rgba(226, 232, 240, 0.88);
+}
+
+.service-detail-list li::marker {
+  color: #93c5fd;
+}
+
+.service-detail-list-numbered {
+  list-style: decimal;
+}
+
+.service-faq-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
 }
 
 /* Portfolio */
@@ -2028,10 +2138,15 @@ footer {
   .portfolio-grid,
   .why-grid,
   .process-steps,
-  .testimonials-grid {
+  .testimonials-grid,
+  .service-detail-sections,
+  .service-faq-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .contact-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .service-page-grid {
     grid-template-columns: minmax(0, 1fr);
   }
   .portfolio-item.is-featured {
@@ -2053,7 +2168,9 @@ footer {
   .portfolio-grid,
   .why-grid,
   .process-steps,
-  .testimonials-grid {
+  .testimonials-grid,
+  .service-detail-sections,
+  .service-faq-grid {
     grid-template-columns: minmax(0, 1fr);
   }
   .footer-grid {

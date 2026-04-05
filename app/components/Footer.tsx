@@ -36,6 +36,14 @@ const NAV_LINKS = [
   { href: "#contact", label: "Contact" },
 ];
 
+const SERVICE_LINKS = [
+  { href: "/services/branding", label: "Branding" },
+  { href: "/services/websites", label: "Websites" },
+  { href: "/services/shopify-design", label: "Shopify" },
+  { href: "/services/wordpress-design", label: "WordPress" },
+  { href: "/services/social-media-design", label: "Social Media" },
+];
+
 export default function Footer() {
   return (
     <Box
@@ -212,32 +220,29 @@ export default function Footer() {
                 sx={{
                   display: "grid",
                   gridTemplateColumns: {
-                    xs: "repeat(2, minmax(0, 1fr))",
-                    md: "repeat(2, minmax(0, 1fr))",
+                    xs: "1fr",
+                    sm: "repeat(2, minmax(0, 1fr))",
+                    md: "repeat(3, minmax(0, 1fr))",
                   },
-                  gap: { xs: 2.5, md: 3 },
+                  gap: { xs: 2.5, md: 2.5 },
                   alignItems: "start",
-                  "@media (max-width: 360px)": {
-                    gridTemplateColumns: "1fr",
-                  },
+                  height: "100%",
+                  pl: { md: 2 },
                 }}
               >
                 <Box
                   sx={{
-                    p: 2,
-                    borderRadius: 3,
-                    border: "1px solid rgba(148, 163, 184, 0.18)",
-                    background: "rgba(15, 23, 42, 0.42)",
+                    minWidth: 0,
                   }}
                 >
-                  <Stack spacing={1}>
+                  <Stack spacing={1.4}>
                     <Typography
                       variant="overline"
-                      sx={{ letterSpacing: "0.35em", color: "rgba(148, 163, 184, 0.9)" }}
+                      sx={{ letterSpacing: "0.35em", color: "rgba(148, 163, 184, 0.82)" }}
                     >
                       Explore
                     </Typography>
-                    <Stack spacing={0.8} alignItems="flex-start">
+                    <Stack spacing={1} alignItems="flex-start">
                       {NAV_LINKS.map((item) => (
                         <Link
                           key={item.label}
@@ -278,20 +283,68 @@ export default function Footer() {
                 </Box>
                 <Box
                   sx={{
-                    p: 2,
-                    borderRadius: 3,
-                    border: "1px solid rgba(148, 163, 184, 0.18)",
-                    background: "rgba(15, 23, 42, 0.42)",
+                    minWidth: 0,
                   }}
                 >
-                  <Stack spacing={1}>
+                  <Stack spacing={1.4}>
                     <Typography
                       variant="overline"
-                      sx={{ letterSpacing: "0.35em", color: "rgba(148, 163, 184, 0.9)" }}
+                      sx={{ letterSpacing: "0.35em", color: "rgba(148, 163, 184, 0.82)" }}
+                    >
+                      Services
+                    </Typography>
+                    <Stack spacing={1} alignItems="flex-start">
+                      {SERVICE_LINKS.map((item) => (
+                        <Link
+                          key={item.label}
+                          href={item.href}
+                          underline="none"
+                          sx={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: 0.75,
+                            color: "rgba(226, 232, 240, 0.92)",
+                            fontWeight: 500,
+                            transition: "color 0.2s ease, transform 0.2s ease",
+                            "&:hover": {
+                              color: "#ffffff",
+                              transform: "translateX(2px)",
+                            },
+                          }}
+                        >
+                          <Box
+                            component="svg"
+                            viewBox="0 0 24 24"
+                            sx={{
+                              width: 12,
+                              height: 12,
+                              fill: "none",
+                              stroke: "currentColor",
+                              strokeWidth: 2,
+                              opacity: 0.6,
+                            }}
+                          >
+                            <path d="M8 6l6 6-6 6" />
+                          </Box>
+                          {item.label}
+                        </Link>
+                      ))}
+                    </Stack>
+                  </Stack>
+                </Box>
+                <Box
+                  sx={{
+                    minWidth: 0,
+                  }}
+                >
+                  <Stack spacing={1.4}>
+                    <Typography
+                      variant="overline"
+                      sx={{ letterSpacing: "0.35em", color: "rgba(148, 163, 184, 0.82)" }}
                     >
                       Connect
                     </Typography>
-                    <Stack spacing={0.8} alignItems="flex-start">
+                    <Stack spacing={1} alignItems="flex-start">
                       {SOCIAL_LINKS.map((item) => (
                         <Link
                           key={item.label}

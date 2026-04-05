@@ -1,4 +1,4 @@
-﻿// components/ServicesSection.tsx
+import Link from "next/link";
 
 export default function ServicesSection() {
   return (
@@ -26,8 +26,13 @@ export default function ServicesSection() {
             <h3>Brand Identity Systems</h3>
             <p>
               Logos, typography, color and rules built as a clear, scalable
-              identity - not just one file.
+              identity, not just one file.
             </p>
+            <div className="service-card-actions">
+              <Link href="/services/branding" className="btn btn-outline">
+                Learn More
+              </Link>
+            </div>
           </div>
 
           <div className="service-card">
@@ -37,13 +42,18 @@ export default function ServicesSection() {
                   <path d="M5 7h14M5 12h14M5 17h14" />
                 </svg>
               </div>
-              <span className="service-pill">Visual Language</span>
+              <span className="service-pill">Social Media</span>
             </div>
-            <h3>Visual Branding</h3>
+            <h3>Social Media Design</h3>
             <p>
-              Social assets, layouts, and branded collateral that keep your
-              identity consistent everywhere.
+              Social assets, campaign visuals, and repeatable branded content
+              systems that keep your identity consistent everywhere.
             </p>
+            <div className="service-card-actions">
+              <Link href="/services/social-media-design" className="btn btn-outline">
+                Learn More
+              </Link>
+            </div>
           </div>
 
           <div className="service-card">
@@ -55,11 +65,16 @@ export default function ServicesSection() {
               </div>
               <span className="service-pill">Web Build</span>
             </div>
-            <h3>CMS Website Development</h3>
+            <h3>Website Design</h3>
             <p>
-              Clean, fast sites on WordPress, Wix, or Shopify with clear
-              structure and messaging.
+              Clean, fast service websites and landing pages with strong
+              hierarchy, messaging, and conversion flow.
             </p>
+            <div className="service-card-actions">
+              <Link href="/services/websites" className="btn btn-outline">
+                Learn More
+              </Link>
+            </div>
           </div>
 
           <div className="service-card">
@@ -69,13 +84,18 @@ export default function ServicesSection() {
                   <path d="M12 3l2.6 5.3 5.9.9-4.3 4.2 1 5.9-5.2-2.7-5.2 2.7 1-5.9L3.5 9.2l5.9-.9L12 3z" />
                 </svg>
               </div>
-              <span className="service-pill">Toolkit</span>
+              <span className="service-pill">Ecommerce</span>
             </div>
-            <h3>Brand Kits</h3>
+            <h3>Shopify Design</h3>
             <p>
-              Logo files, color codes, font choices, and usage guides in one
-              simple, ready-to-use system.
+              Product-focused storefront design with cleaner trust signals,
+              stronger product presentation, and better user flow.
             </p>
+            <div className="service-card-actions">
+              <Link href="/services/shopify-design" className="btn btn-outline">
+                Learn More
+              </Link>
+            </div>
           </div>
 
           <div className="service-card">
@@ -85,13 +105,18 @@ export default function ServicesSection() {
                   <path d="M4 6h16v12H4zM7 9h6M7 13h10" />
                 </svg>
               </div>
-              <span className="service-pill">UX Layouts</span>
+              <span className="service-pill">CMS</span>
             </div>
-            <h3>Web UI Layouts</h3>
+            <h3>WordPress Design</h3>
             <p>
-              Conversion-oriented layouts for landing pages, portfolios, and
-              business websites.
+              WordPress page structures and layouts designed for content,
+              service pages, and easier ongoing updates.
             </p>
+            <div className="service-card-actions">
+              <Link href="/services/wordpress-design" className="btn btn-outline">
+                Learn More
+              </Link>
+            </div>
           </div>
 
           <div className="service-card">
@@ -108,6 +133,11 @@ export default function ServicesSection() {
               Banners and campaign visuals designed to support your brand and
               goals.
             </p>
+            <div className="service-card-actions">
+              <a href="#contact" className="btn btn-outline">
+                Discuss Scope
+              </a>
+            </div>
           </div>
 
           <div className="service-card">
@@ -124,6 +154,11 @@ export default function ServicesSection() {
               Minimal, premium print-ready assets to match your digital
               identity.
             </p>
+            <div className="service-card-actions">
+              <a href="#contact" className="btn btn-outline">
+                Discuss Scope
+              </a>
+            </div>
           </div>
 
           <div className="service-card">
@@ -139,6 +174,11 @@ export default function ServicesSection() {
             <p>
               On-shelf designs that feel premium and instantly recognizable.
             </p>
+            <div className="service-card-actions">
+              <a href="#contact" className="btn btn-outline">
+                Discuss Scope
+              </a>
+            </div>
           </div>
         </div>
 
@@ -148,6 +188,9 @@ export default function ServicesSection() {
             <a href="#contact" className="btn btn-outline">
               Get a Custom Scope
             </a>
+            <Link href="/services" className="btn btn-outline">
+              Explore All Services
+            </Link>
           </div>
         </div>
       </div>
