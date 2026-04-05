@@ -7,6 +7,5 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
     },
     sitemap: "https://3craft.digital/sitemap.xml",
-    host: "https://3craft.digital",
   };
 }
