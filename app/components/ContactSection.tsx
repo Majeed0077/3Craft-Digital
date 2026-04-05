@@ -139,9 +139,9 @@ export default function ContactSection() {
         <div>
           <div className="section-kicker">Contact</div>
           <div className="contact-tag">Start your project</div>
-          <h2>Tell us what you need. We'll tell you how we'd solve it.</h2>
+          <h2>Tell us what you need. We&apos;ll tell you how we&apos;d solve it.</h2>
           <p>
-            Send a quick overview of your brand, project, and deadline. We'll
+            Send a quick overview of your brand, project, and deadline. We&apos;ll
             reply with a clear game plan, pricing, and timeline, no fluff, no
             pressure.
           </p>
@@ -275,7 +275,7 @@ export default function ContactSection() {
 
           {status === "success" && !globalError && (
             <div className="form-feedback form-feedback-success">
-              Message sent. We'll get back to you shortly.
+              Message sent. We&apos;ll get back to you shortly.
             </div>
           )}
 
