@@ -25,6 +25,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/Image/3-mark-logo-design.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/Image/3-mark-logo-design.png",
+  },
   openGraph: {
     type: "website",
     url: "https://3craft.digital",
